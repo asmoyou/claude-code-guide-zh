@@ -258,116 +258,116 @@ export VERTEX_REGION_CLAUDE_4_0_SONNET="REGION"       # Region override for Clau
 export VERTEX_REGION_CLAUDE_4_1_OPUS="REGION"         # Region override for Claude 4.1 Opus on Vertex AI
 ```
 
-<h2 id="global-config-options">Global Config Options</h2>
+<h2 id="global-config-options">全局配置选项</h2>
 
 ```bash
-claude config set -g theme dark                               # Theme: dark | light | light-daltonized | dark-daltonized
-claude config set -g preferredNotifChannel iterm2_with_bell   # Notification channel: iterm2 | iterm2_with_bell | terminal_bell | notifications_disabled
-claude config set -g autoUpdates true                         # Auto-download & install updates (applied on restart)
-claude config set -g verbose true                             # Show full bash/command outputs
+claude config set -g theme dark                               # 主题: dark | light | light-daltonized | dark-daltonized
+claude config set -g preferredNotifChannel iterm2_with_bell   # 通知渠道: iterm2 | iterm2_with_bell | terminal_bell | notifications_disabled
+claude config set -g autoUpdates true                         # 自动下载并安装更新 (重启后生效)
+claude config set -g verbose true                             # 显示完整的bash/命令输出
 
-claude config set -g includeCoAuthoredBy false                # Omit "co-authored-by Claude" in git commits/PRs
-claude config set -g forceLoginMethod console                 # Restrict login to Anthropic Console (API billing)
-claude config set -g model "claude-3-5-sonnet-20241022"       # Default model override
-claude config set -g statusLine '{"type":"command","command":"~/.claude/statusline.sh"}'  # Custom status line
+claude config set -g includeCoAuthoredBy false                # 在git提交/PR中省略 "co-authored-by Claude"
+claude config set -g forceLoginMethod console                 # 限制登录到Anthropic控制台 (API计费)
+claude config set -g model "claude-3-5-sonnet-20241022"       # 默认模型覆盖
+claude config set -g statusLine '{"type":"command","command":"~/.claude/statusline.sh"}'  # 自定义状态行
 
-claude config set -g enableAllProjectMcpServers true              # Auto-approve all MCP servers from .mcp.json
-claude config set -g enabledMcpjsonServers '["memory","github"]'  # Approve specific MCP servers
-claude config set -g disabledMcpjsonServers '["filesystem"]'      # Reject specific MCP servers
+claude config set -g enableAllProjectMcpServers true              # 自动批准.mcp.json中的所有MCP服务器
+claude config set -g enabledMcpjsonServers '["memory","github"]'  # 批准特定的MCP服务器
+claude config set -g disabledMcpjsonServers '["filesystem"]'      # 拒绝特定的MCP服务器
 ```
 > [!Important] 
-> **Windows Users replace <kbd>export</kbd> with <kbd>set</kbd>**
+> **Windows用户请将<kbd>export</kbd>替换为<kbd>set</kbd>**
 ```bash
-export DISABLE_AUTOUPDATER=1                      # Turn off automatic updates globally (overrides autoUpdates)
-export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 # Disable nonessential traffic (equiv. to DISABLE_* toggles below)
-export DISABLE_TELEMETRY=1                        # Opt out of Statsig telemetry
-export DISABLE_ERROR_REPORTING=1                  # Opt out of Sentry error reporting
-export DISABLE_BUG_COMMAND=1                      # Disable the /bug command
-export DISABLE_COST_WARNINGS=0                    # Keep cost warnings (set 1 to hide)
-export DISABLE_NON_ESSENTIAL_MODEL_CALLS=1        # Skip non-critical model calls (flavor text, etc.)
+export DISABLE_AUTOUPDATER=1                      # 全局关闭自动更新 (覆盖autoUpdates设置)
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 # 禁用非必要流量 (等同于下面的DISABLE_*开关)
+export DISABLE_TELEMETRY=1                        # 选择退出Statsig遥测
+export DISABLE_ERROR_REPORTING=1                  # 选择退出Sentry错误报告
+export DISABLE_BUG_COMMAND=1                      # 禁用/bug命令
+export DISABLE_COST_WARNINGS=0                    # 保留成本警告 (设置为1隐藏)
+export DISABLE_NON_ESSENTIAL_MODEL_CALLS=1        # 跳过非关键模型调用 (例如，风格文本等)
 
-export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1       # Stop auto-updating terminal titles
-export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1 # Return to original project dir after each Bash command
-export CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL=1        # Skip auto-installation of IDE extensions
-export USE_BUILTIN_RIPGREP=0                      # Use system 'rg' (0) instead of bundled 'rg'
+export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1       # 停止自动更新终端标题
+export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1 # 每个Bash命令后返回原始项目目录
+export CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL=1        # 跳过IDE扩展的自动安装
+export USE_BUILTIN_RIPGREP=0                      # 使用系统 'rg' (0) 而不是捆绑的 'rg'
 
-export MAX_THINKING_TOKENS=0                      # (0 or 1 to turn off/on) force a thinking budget for the model
-export CLAUDE_CODE_MAX_OUTPUT_TOKENS=4096         # Cap typical response size (example value)
+export MAX_THINKING_TOKENS=0                      # (0或1开启/关闭) 强制模型的思考预算
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS=4096         # 限制典型响应大小 (示例值)
 
-export HTTP_PROXY="http://proxy.company:8080"     # HTTP proxy (if needed)
-export HTTPS_PROXY="https://proxy.company:8443"   # HTTPS proxy (if needed)
+export HTTP_PROXY="http://proxy.company:8080"     # HTTP代理 (如果需要)
+export HTTPS_PROXY="https://proxy.company:8443"   # HTTPS代理 (如果需要)
 ```
 
-<h2 id="configuration-files">Configuration Files</h2>
+<h2 id="configuration-files">配置文件</h2>
 
-**(Memory type) Claude Code offers four memory locations in a hierarchical structure, each serving a different purpose:**
+**(内存类型) Claude Code 提供了四种内存位置，采用分层结构，每种用途不同:**
 
-| Memory Type                | Location                                                                                                                                                | Purpose                                             | Use Case Examples                                                    | Shared With                     |
+| 内存类型                | 位置                                                                                                                                                | 用途                                             | 使用场景示例                                                    | 共享对象                     |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------- |
-| **Enterprise policy**      | macOS: `/Library/Application Support/ClaudeCode/CLAUDE.md`<br />Linux: `/etc/claude-code/CLAUDE.md`<br />Windows: `C:\ProgramData\ClaudeCode\CLAUDE.md` | Organization-wide instructions managed by IT/DevOps | Company coding standards, security policies, compliance requirements | All users in organization       |
-| **Project memory**         | `./CLAUDE.md`                                                                                                                                           | Team-shared instructions for the project            | Project architecture, coding standards, common workflows             | Team members via source control |
-| **User memory**            | `~/.claude/CLAUDE.md`                                                                                                                                   | Personal preferences for all projects               | Code styling preferences, personal tooling shortcuts                 | Just you (all projects)         |
-| **Project memory (local)** | `./CLAUDE.local.md`                                                                                                                                     | Personal project-specific preferences               | *(Deprecated, see below)* Your sandbox URLs, preferred test data     | Just you (current project)      |
+| **企业策略**      | macOS: `/Library/Application Support/ClaudeCode/CLAUDE.md`<br />Linux: `/etc/claude-code/CLAUDE.md`<br />Windows: `C:\ProgramData\ClaudeCode\CLAUDE.md` | 由IT/DevOps管理的全组织范围的指令 | 公司编码标准、安全策略、合规要求 | 组织内的所有用户       |
+| **项目内存**         | `./CLAUDE.md`                                                                                                                                           | 团队共享的项目指令            | 项目架构、编码标准、常见工作流程             | 通过源代码控制的团队成员 |
+| **用户内存**            | `~/.claude/CLAUDE.md`                                                                                                                                   | 个人偏好，适用于所有项目               | 代码风格偏好、个人工具快捷键                 | 仅你自己 (所有项目)         |
+| **项目内存 (本地)** | `./CLAUDE.local.md`                                                                                                                                     | 个人项目特定偏好               | *(已弃用，见下文)* 你的沙盒URL、首选测试数据     | 仅你自己 (当前项目)      |
 
->All memory files are automatically loaded into Claude Code's context when launched. Files higher in the hierarchy take precedence and are loaded first, providing a foundation that more specific memories build upon.
+>所有内存文件在启动时会自动加载到Claude Code的上下文中。层级较高的文件优先加载，为更具体的内存提供基础。
 
 ---
 
-<h1 id="commands--usage">Commands & Usage</h1>
+<h1 id="commands--usage">命令与使用</h1>
 
-<h2 id="claude-commands">Claude Commands</h2>
+<h2 id="claude-commands">Claude 命令</h2>
 
-| Command                   | Purpose                                                                                                                                      |
+| 命令                   | 用途                                                                                                                                      |
 | :------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/add-dir`                | Add additional working directories                                                                                                           |
-| `/agents`                 | Manage custom AI subagents for specialized tasks                                                                                             |
-| `/bug`                    | Report bugs (sends conversation to Anthropic)                                                                                                |
-| `/clear`                  | Clear conversation history                                                                                                                   |
-| `/compact [instructions]` | Compact conversation with optional focus instructions                                                                                        |
-| `/config`                 | View/modify configuration                                                                                                                    |
-| `/cost`                   | Show token usage statistics and billing information |
-| `/doctor`                 | Checks the health of your Claude Code installation                                                                                           |
-| `/help`                   | Get usage help                                                                                                                               |
-| `/init`                   | Initialize project with CLAUDE.md guide                                                                                                      |
-| `/login`                  | Switch Anthropic accounts                                                                                                                    |
-| `/logout`                 | Sign out from your Anthropic account                                                                                                         |
-| `/mcp`                    | Manage MCP server connections and OAuth authentication                                                                                       |
-| `/memory`                 | Edit CLAUDE.md memory files                                                                                                                  |
-| `/model`                  | Select or change the AI model                                                                                                                |
-| `/permissions`            | View or update tool permissions |
-| `/pr_comments`            | View pull request comments                                                                                                                   |
-| `/review`                 | Request code review                                                                                                                          |
-| `/status`                 | View account and system statuses                                                                                                             |
-| `/terminal-setup`         | Install Shift+Enter key binding for newlines (iTerm2 and VSCode only)                                                                        |
-| `/vim`                    | Enter vim mode for alternating insert and command modes                                                                                      |
+| `/add-dir`                | 添加额外的工作目录                                                                                                           |
+| `/agents`                 | 管理用于特定任务的自定义AI子代理                                                                                             | 
+| `/bug`                    | 报告错误 (将对话发送给Anthropic)                                                                                                |
+| `/clear`                  | 清除对话历史                                                                                                                   |
+| `/compact [instructions]` | 使用可选的焦点指令压缩对话                                                                                        |
+| `/config`                 | 查看/修改配置                                                                                                                    |
+| `/cost`                   | 显示令牌使用统计和计费信息 |
+| `/doctor`                 | 检查Claude Code安装的健康状况                                                                                           |
+| `/help`                   | 获取使用帮助                                                                                                                               |
+| `/init`                   | 使用CLAUDE.md指南初始化项目                                                                                                      |
+| `/login`                  | 切换Anthropic账户                                                                                                                    |
+| `/logout`                 | 从您的Anthropic账户注销                                                                                                         |
+| `/mcp`                    | 管理MCP服务器连接和OAuth认证                                                                                       |
+| `/memory`                 | 编辑CLAUDE.md内存文件                                                                                                                  |
+| `/model`                  | 选择或更改AI模型                                                                                                                |
+| `/permissions`            | 查看或更新工具权限 |
+| `/pr_comments`            | 查看拉取请求评论                                                                                                                   |
+| `/review`                 | 请求代码审查                                                                                                                          |
+| `/status`                 | 查看账户和系统状态                                                                                                             |
+| `/terminal-setup`         | 为换行符安装Shift+Enter键绑定 (仅限iTerm2和VSCode)                                                                        |
+| `/vim`                    | 进入vim模式以交替插入和命令模式                                                                                      |
 
-<h2 id="command-line-flags">Command Line Flags</h2>
+<h2 id="command-line-flags">命令行标志</h2>
 
-| Flag / Command                             | Description                                                                                                                                              | Example                                                     |
+| 标志 / 命令                             | 描述                                                                                                                                              | 示例                                                     |
 | :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- |
-| `-d, --debug`                              | Enable debug mode (shows detailed debug output).  | `claude -d -p "query"`                   |
-| `--include-partial-messages`                | partial message streaming support via CLI flag  |
-| `--mcp-debug`                               | [DEPRECATED] MCP debug mode (shows MCP server errors). Use `--debug` instead.                                                                             | `claude --mcp-debug`                                        |
-| `--verbose`                                 | Override verbose mode setting from config (shows expanded logging / turn-by-turn output).                                                                | `claude --verbose`                                          |
-| `-p, --print`                               | Print response and exit (useful for piping output).                                                                                                     | `claude -p "query"`                                         |
-| `--output-format <format>`                  | Output format (only works with `--print`): `text` (default), `json` (single result), or `stream-json` (realtime streaming).                              | `claude -p "query" --output-format json`                    |
-| `--input-format <format>`                   | Input format (only works with `--print`): `text` (default) or `stream-json` (realtime streaming input).                                                  | `claude -p --output-format stream-json --input-format stream-json` |
-| `--replay-user-messages`                    | Re-emit user messages from stdin back to stdout for acknowledgment — **only works with** `--input-format=stream-json` **and** `--output-format=stream-json`. | `claude --input-format stream-json --output-format stream-json --replay-user-messages` |
-| `--allowedTools`, `--allowed-tools <tools...>`  | Comma/space-separated list of tool names to allow (e.g. `"Bash(git:*) Edit"`).                                                                           | `--allowed-tools "Bash(git:*)" Edit"`                       |
-| `--disallowedTools`, `--disallowed-tools <tools...>` | Comma/space-separated list of tool names to deny (e.g. `"Bash(git:*) Edit"`).                                                                            | `--disallowed-tools "Edit"`                                 |
-| `--mcp-config <configs...>`                 | Load MCP servers from JSON files or strings (space-separated).                                                                                          | `claude --mcp-config ./mcp-servers.json`                    |
-| `--strict-mcp-config`                       | Only use MCP servers from `--mcp-config`, ignoring other MCP configurations.                                                                             | `claude --mcp-config ./a.json --strict-mcp-config`          |
-| `--append-system-prompt <prompt>`           | Append a system prompt to the default system prompt (useful in print mode).                                                                              | `claude -p --append-system-prompt "Do X then Y"`            |
-| `--permission-mode <mode>`                  | Permission mode for the session (choices include `acceptEdits`, `bypassPermissions`, `default`, `plan`).                                                 | `claude --permission-mode plan`                             |
-| `--permission-prompt-tool <tool>`           | Specify an MCP tool to handle permission prompts in non-interactive mode.                                                                               | `claude -p --permission-prompt-tool mcp_auth_tool "query"`  |
-| `--fallback-model <model>`                  | Enable automatic fallback to a specified model when the default is overloaded (note: only works with `--print` per help).                                 | `claude -p --fallback-model claude-haiku-20240307 "query"`  |
-| `--model <model>`                            | Model for the current session. Accepts aliases like `sonnet`/`opus` or a full model name (e.g. `claude-sonnet-4-20250514`).                               | `claude --model sonnet`                                     |
-| `--settings <file-or-json>`                  | Load additional settings from a JSON file or a JSON string.                                                                                              | `claude --settings ./settings.json`                         |
-| `--add-dir <directories...>`                 | Additional directories to allow tool access to.                                                                                                          | `claude --add-dir ../apps ../lib`                           |
-| `--ide`                                      | Automatically connect to an IDE on startup if exactly one valid IDE is available.                                                                        | `claude --ide`                                              |
-| `-c, --continue`                             | Continue the most recent conversation in the current directory.                                                                                          | `claude --continue`                                         |
-| `-r, --resume [sessionId]`                   | Resume a conversation; provide a session ID or interactively select one.                                                                                 | `claude -r "abc123"`                                        |
-| `--session-id <uuid>`                        | Use a specific session ID for the conversation (must be a valid UUID).                                                                                   | `claude --session-id 123e4567-e89b-12d3-a456-426614174000`  |
+| `-d, --debug`                              | 启用调试模式 (显示详细的调试输出)。  | `claude -d -p "query"`                   |
+| `--include-partial-messages`                | 通过CLI标志支持部分消息流式传输  |
+| `--mcp-debug`                               | [已弃用] MCP调试模式 (显示MCP服务器错误)。请改用 `--debug`。                                                                             | `claude --mcp-debug`                                        |
+| `--verbose`                                 | 覆盖配置中的详细模式设置 (显示扩展日志记录/逐行输出)。                                                                | `claude --verbose`                                          |
+| `-p, --print`                               | 打印响应并退出 (适用于管道输出)。                                                                                                     | `claude -p "query"`                                         |
+| `--output-format <format>`                  | 输出格式 (仅适用于 `--print`): `text` (默认), `json` (单个结果), 或 `stream-json` (实时流式传输)。                              | `claude -p "query" --output-format json`                    |
+| `--input-format <format>`                   | 输入格式 (仅适用于 `--print`): `text` (默认) 或 `stream-json` (实时流式传输输入)。                                                  | `claude -p --output-format stream-json --input-format stream-json` |
+| `--replay-user-messages`                    | 将stdin中的用户消息重新发送回stdout以进行确认 — **仅适用于** `--input-format=stream-json` **和** `--output-format=stream-json`。 | `claude --input-format stream-json --output-format stream-json --replay-user-messages` |
+| `--allowedTools`, `--allowed-tools <tools...>`  | 允许的工具名称列表，以逗号/空格分隔 (例如 `"Bash(git:*) Edit"`)。                                                                           | `--allowed-tools "Bash(git:*)" Edit"`                       |
+| `--disallowedTools`, `--disallowed-tools <tools...>` | 拒绝的工具名称列表，以逗号/空格分隔 (例如 `"Bash(git:*) Edit"`)。                                                                            | `--disallowed-tools "Edit"`                                 |
+| `--mcp-config <configs...>`                 | 从JSON文件或字符串加载MCP服务器 (空格分隔)。                                                                                          | `claude --mcp-config ./mcp-servers.json`                    |
+| `--strict-mcp-config`                       | 仅使用 `--mcp-config` 中的MCP服务器，忽略其他MCP配置。                                                                             | `claude --mcp-config ./a.json --strict-mcp-config`          |
+| `--append-system-prompt <prompt>`           | 将系统提示附加到默认系统提示 (在打印模式下很有用)。                                                                              | `claude -p --append-system-prompt "Do X then Y"`            |
+| `--permission-mode <mode>`                  | 会话的权限模式 (选项包括 `acceptEdits`, `bypassPermissions`, `default`, `plan`)。                                                 | `claude --permission-mode plan`                             |
+| `--permission-prompt-tool <tool>`           | 指定一个MCP工具来处理非交互模式下的权限提示。                                                                               | `claude -p --permission-prompt-tool mcp_auth_tool "query"`  |
+| `--fallback-model <model>`                  | 当默认模型过载时，启用自动回退到指定模型 (注意: 仅适用于 `--print`，请参阅帮助)。                                 | `claude -p --fallback-model claude-haiku-20240307 "query"`  |
+| `--model <model>`                            | 当前会话的模型。接受别名，如 `sonnet`/`opus` 或完整的模型名称 (例如 `claude-sonnet-4-20250514`)。                               | `claude --model sonnet`                                     |
+| `--settings <file-or-json>`                  | 从JSON文件或JSON字符串加载其他设置。                                                                                              | `claude --settings ./settings.json`                         |
+| `--add-dir <directories...>`                 | 允许工具访问的额外目录。                                                                                                          | `claude --add-dir ../apps ../lib`                           |
+| `--ide`                                      | 如果只有一个有效的IDE可用，则在启动时自动连接到IDE。                                                                        | `claude --ide`                                              |
+| `-c, --continue`                             | 继续当前目录中最近的对话。                                                                                          | `claude --continue`                                         |
+| `-r, --resume [sessionId]`                   | 恢复对话；提供会话ID或交互式选择一个。                                                                                 | `claude -r "abc123"`                                        |
+| `--session-id <uuid>`                        | 为对话使用特定的会话ID (必须是有效的UUID)。                                                                                   | `claude --session-id 123e4567-e89b-12d3-a456-426614174000`  |
 | `--dangerously-skip-permissions`             | Bypass all permission checks (only for trusted sandboxes).                                                                                               | `claude --dangerously-skip-permissions`                     |
 | `-v, --version`                              | Show the installed `claude` CLI version.                                                                                                                 | `claude --version`                                          |
 | `-h, --help`                                 | Display help / usage.                                                                                                                                     | `claude --help`                                             |
@@ -418,43 +418,43 @@ claude config add enabledMcpjsonServers memory         # Add another
 claude config remove enabledMcpjsonServers memory      # Remove one entry
 claude config add disabledMcpjsonServers filesystem    # Explicitly reject a specific MCP server
 
-# Global scope (use -g or --global)
-claude config set -g autoUpdates false                 # Turn off automatic updates globally
+# 全局范围（使用 -g 或 --global）
+claude config set -g autoUpdates false                 # 全局关闭自动更新
 claude config set --global preferredNotifChannel iterm2_with_bell
-claude config set -g theme dark                        # Theme: dark | light | light-daltonized | dark-daltonized
-claude config set -g verbose true                      # Show full bash/command outputs everywhere
-claude config get -g theme                             # Confirm a global value
+claude config set -g theme dark                        # 主题：dark | light | light-daltonized | dark-daltonized
+claude config set -g verbose true                      # 在所有地方显示完整的 bash/命令输出
+claude config get -g theme                             # 确认全局值
 
-# MCP (Model Context Protocol) management
-claude mcp                          # Launch MCP wizard / configure MCP servers
-claude mcp list                     # List configured MCP servers
-claude mcp get <name>               # Show details for a server
-claude mcp remove <name>            # Remove a server
-claude mcp add <name> <command> [args...]                 # Add local stdio server
-claude mcp add --transport sse <name> <url>               # Add remote SSE server
-claude mcp add --transport http <name> <url>              # Add remote HTTP server
-claude mcp add <name> --env KEY=VALUE -- <cmd> [args...]  # Pass env to server command
+# MCP（模型上下文协议）管理
+claude mcp                          # 启动 MCP 向导 / 配置 MCP 服务器
+claude mcp list                     # 列出已配置的 MCP 服务器
+claude mcp get <name>               # 显示服务器的详细信息
+claude mcp remove <name>            # 移除服务器
+claude mcp add <name> <command> [args...]                 # 添加本地 stdio 服务器
+claude mcp add --transport sse <name> <url>               # 添加远程 SSE 服务器
+claude mcp add --transport http <name> <url>              # 添加远程 HTTP 服务器
+claude mcp add <name> --env KEY=VALUE -- <cmd> [args...]  # 向服务器命令传递环境变量
 claude mcp add --transport sse private-api https://api.example/mcp \
-  --header "Authorization: Bearer TOKEN"                  # Add with auth header
-claude mcp add-json <name> '<json>'                       # Add server via JSON blob
-claude mcp add-from-claude-desktop                        # Import servers from Claude Desktop
-claude mcp reset-project-choices                          # Reset approvals for project .mcp.json servers
-claude mcp serve                                          # Run Claude Code itself as an MCP stdio server
+  --header "Authorization: Bearer TOKEN"                  # 添加带有认证头的服务器
+claude mcp add-json <name> '<json>'                       # 通过 JSON 块添加服务器
+claude mcp add-from-claude-desktop                        # 从 Claude Desktop 导入服务器
+claude mcp reset-project-choices                          # 重置对项目 .mcp.json 服务器的批准
+claude mcp serve                                          # 将 Claude Code 本身作为 MCP stdio 服务器运行
 
-# Other useful flags (print / SDK mode)
-claude --add-dir ../apps ../lib                     # Add additional working directories
-claude --allowedTools "Bash(git log:*)" "Read"      # Allow listed tools without permission prompts
-claude --disallowedTools "Edit"                     # Disallow listed tools without permission prompts
-claude --append-system-prompt "Custom instruction"  # Append to system prompt (only with -p)
-claude -p "query" --output-format json --input-format stream-json  # Control IO formats for scripting
-claude --verbose                                    # Verbose logging (turn-by-turn)
-claude --dangerously-skip-permissions               # Skip permission prompts (use with caution)
+# 其他有用的标志（打印 / SDK 模式）
+claude --add-dir ../apps ../lib                     # 添加额外的工作目录
+claude --allowedTools "Bash(git log:*)" "Read"      # 允许列出的工具而无需权限提示
+claude --disallowedTools "Edit"                     # 禁止列出的工具而无需权限提示
+claude --append-system-prompt "Custom instruction"  # 附加到系统提示（仅与 -p 一起使用）
+claude -p "query" --output-format json --input-format stream-json  # 控制脚本的输入输出格式
+claude --verbose                                    # 详细日志记录（逐轮）
+claude --dangerously-skip-permissions               # 跳过权限提示（谨慎使用）
 
-# Quick verification / notes
-# - Project scope is default for 'claude config'; use -g/--global to affect all projects.
-# - Settings precedence: Enterprise > CLI args > local project > shared project > user (~/.claude).
-# - Use 'add' / 'remove' only with list-type keys (e.g., enabledMcpjsonServers).
-# - The CLI reference and release notes are the authoritative sources for flags and recent additions.
+# 快速验证 / 注意事项
+# - 项目范围是 'claude config' 的默认值；使用 -g/--global 影响所有项目。
+# - 设置优先级：企业 > CLI 参数 > 本地项目 > 共享项目 > 用户 (~/.claude)。
+# - 仅对列表类型键（例如 enabledMcpjsonServers）使用 'add' / 'remove'。
+# - CLI 参考和发布说明是标志和最新添加的权威来源。
 ```
 
 ---
@@ -468,106 +468,106 @@ claude --dangerously-skip-permissions               # Skip permission prompts (u
 | `Ctrl+C`         | Cancel current input or generation | Standard interrupt         |
 | `Ctrl+D`         | Exit Claude Code session           | EOF signal                 |
 | `Ctrl+L`         | Clear terminal screen              | Keeps conversation history |
-| `Up/Down arrows` | Navigate command history           | Recall previous inputs     |
-| `Esc` + `Esc`    | Edit previous message              | Double-escape to modify    |
+| `上/下箭头` | 导航命令历史记录           | 调用以前的输入     |
+| `Esc` + `Esc`    | 编辑上一条消息              | 双击 Esc 进行修改    |
 
-<h3 id="multiline-input">Multiline Input</h3>
+<h3 id="multiline-input">多行输入</h3>
 
-| Method           | Shortcut       | Context                           |
+| 方法           | 快捷键       | 上下文                           |
 | :--------------- | :------------- | :-------------------------------- |
-| Quick escape     | `\` + `Enter`  | Works in all terminals            |
-| macOS default    | `Option+Enter` | Default on macOS                  |
-| Terminal setup   | `Shift+Enter`  | After `/terminal-setup`           |
-| Control sequence | `Ctrl+J`       | Line feed character for multiline |
-| Paste mode       | Paste directly | For code blocks, logs             |
+| 快速退出     | `\` + `Enter`  | 适用于所有终端            |
+| macOS 默认    | `Option+Enter` | macOS 默认                  |
+| 终端设置   | `Shift+Enter`  | `/terminal-setup` 后           |
+| 控制序列 | `Ctrl+J`       | 多行输入的回车符 |
+| 粘贴模式       | 直接粘贴 | 用于代码块、日志             |
 
-<h3 id="quick-commands">Quick Commands</h3>
+<h3 id="quick-commands">快速命令</h3>
 
-| Shortcut     | Description                        | Notes                                                     |
+| 快捷键     | 描述                        | 注意事项                                                     |
 | :----------- | :--------------------------------- | :-------------------------------------------------------- |
-| `#` at start | Memory shortcut add to CLAUDE.md | Prompts for file selection                                |
-| `/` at start | Slash command                      |  
+| `#` 开头 | 内存快捷方式添加到 CLAUDE.md | 提示文件选择                                |
+| `/` 开头 | 斜杠命令                      |  
 
-<h2 id="vim-mode">Vim Mode</h2>
+<h2 id="vim-mode">Vim 模式</h2>
 
 > [!Note]
->  Enable vim-style editing with `/vim` command or configure permanently via `/config`.
+>  使用 `/vim` 命令启用 Vim 风格编辑，或通过 `/config` 永久配置。
 
-<h3 id="vim-mode-switching">Vim Mode Switching</h3>
+<h3 id="vim-mode-switching">Vim 模式切换</h3>
 
-| Command | Action                      | From mode |
+| 命令 | 动作                      | 来自模式 |
 | :------ | :-------------------------- | :-------- |
-| `Esc`   | Enter NORMAL mode           | INSERT    |
-| `i`     | Insert before cursor        | NORMAL    |
-| `I`     | Insert at beginning of line | NORMAL    |
-| `a`     | Insert after cursor         | NORMAL    |
-| `A`     | Insert at end of line       | NORMAL    |
-| `o`     | Open line below             | NORMAL    |
-| `O`     | Open line above             | NORMAL    |
+| `Esc`   | 进入 NORMAL 模式           | INSERT    |
+| `i`     | 在光标前插入        | NORMAL    |
+| `I`     | 在行首插入 | NORMAL    |
+| `a`     | 在光标后插入         | NORMAL    |
+| `A`     | 在行尾插入       | NORMAL    |
+| `o`     | 在下方打开行             | NORMAL    |
+| `O`     | 在上方打开行             | NORMAL    |
 
-<h3 id="vim-navigation">Vim Navigation</h3>
+<h3 id="vim-navigation">Vim 导航</h3>
 
-| Command         | Action                    |
+| 命令         | 动作                    |
 | :-------------- | :------------------------ |
-| `h`/`j`/`k`/`l` | Move left/down/up/right   |
-| `w`             | Next word                 |
-| `e`             | End of word               |
-| `b`             | Previous word             |
-| `0`             | Beginning of line         |
-| `$`             | End of line               |
-| `^`             | First non-blank character |
-| `gg`            | Beginning of input        |
-| `G`             | End of input              |
+| `h`/`j`/`k`/`l` | 左/下/上/右移动   |
+| `w`             | 下一个单词                 |
+| `e`             | 单词末尾              |
+| `b`             | 上一个单词             |
+| `0`             | 行首         |
+| `$`             | 行尾              |
+| `^`             | 第一个非空白字符 |
+| `gg`            | 输入开头        |
+| `G`             | 输入末尾              |
 
-<h3 id="vim-editing">Vim Editing</h3>
+<h3 id="vim-editing">Vim 编辑</h3>
 
-| Command        | Action                  |
+| 命令        | 动作                  |
 | :------------- | :---------------------- |
-| `x`            | Delete character        |
-| `dd`           | Delete line             |
-| `D`            | Delete to end of line   |
-| `dw`/`de`/`db` | Delete word/to end/back |
-| `cc`           | Change line             |
-| `C`            | Change to end of line   |
-| `cw`/`ce`/`cb` | Change word/to end/back |
-| `.`            | Repeat last change      |
+| `x`            | 删除字符        |
+| `dd`           | 删除行             |
+| `D`            | 删除到行尾   |
+| `dw`/`de`/`db` | 删除单词/到末尾/向后 |
+| `cc`           | 更改行             |
+| `C`            | 更改到行尾   |
+| `cw`/`ce`/`cb` | 更改单词/到末尾/向后 |
+| `.`            | 重复上次更改      |
 
 > [!Tip]
-> Configure your preferred line break behavior in terminal settings. Run `/terminal-setup` to install Shift+Enter binding for iTerm2 and VS Code terminals.
+> 在终端设置中配置您偏好的换行行为。运行 `/terminal-setup` 为 iTerm2 和 VS Code 终端安装 Shift+Enter 绑定。
 
-<h2 id="command-history">Command History</h2>
+<h2 id="command-history">命令历史记录</h2>
 
-> Claude Code maintains command history for the current session:
+> Claude Code 为当前会话维护命令历史记录：
 ```
-* History is stored per working directory
-* Cleared with `/clear` command
-* Use Up/Down arrows to navigate (see keyboard shortcuts above)
-* **Ctrl+R**: Reverse search through history (if supported by terminal)
-* **Note**: History expansion (`!`) is disabled by default
+* 历史记录按工作目录存储
+* 使用 `/clear` 命令清除
+* 使用上/下箭头导航（参见上面的键盘快捷键）
+* **Ctrl+R**：在历史记录中反向搜索（如果终端支持）
+* **注意**：历史扩展（`!`）默认禁用
 ```
 
 ---
 
-<h1 id="advanced-features">Advanced Features</h1>
+<h1 id="advanced-features">高级功能</h1>
 
-<h2 id="thinking-keywords">Thinking Keywords</h2>
+<h2 id="thinking-keywords">思考关键词</h2>
 
 > [!Note]
-> **Gives Claude extra pre-answer planning time by adding ONE of these keywords to your prompt.**
-> **Order (lowest → highest) token consumption**
+> **通过在您的提示中添加以下关键词之一，为 Claude 争取额外的预回答规划时间。**
+> **顺序（最低 → 最高）令牌消耗**
 > <table><tr><td>
 > 
-> > **<kbd>think</kbd> -------------> Lowest**
+> > **<kbd>think</kbd> -------------> 最低**
 > 
 > > **<kbd>think hard</kbd>**
 > 
 > > **<kbd>think harder</kbd>**
 > 
-> > **<kbd>ultrathink</kbd> --------> Highest**
+> > **<kbd>ultrathink</kbd> --------> 最高**
 > 
 > </td></tr></table>
 
-<h3 id="this-makes-claude-spend-more-time">This makes Claude spend more time:</h3>
+<h3 id="this-makes-claude-spend-more-time">这让 Claude 花费更多时间：</h3>
 
 1. **Planning the solution**
 2. #### breaking down steps
@@ -598,47 +598,47 @@ claude -p "Ultrathink. Propose a step-by-step strategy to fix flaky payment test
 > - You want version‑controlled prompts and tool policies alongside the codebase.
 > - You work in PR‑driven teams and want scoped edits by role.
 
-<h3 id="each-sub-agent-has-its-own-context">Each Sub‑Agent Has Its Own Context</h3>
+<h3 id="each-sub-agent-has-its-own-context">每个子代理都有自己的上下文</h3>
 
-**Design rules for your lineup**
-> - Define **one clear responsibility** per agent.
-> - Keep the **minimum** tool set needed for that role.
-> - Prefer **read‑only** agents for analysis/review tasks.
-> - Give edit powers to as few agents as possible.
+**为你的阵容设计规则**
+> - 为每个代理定义**一个明确的职责**。
+> - 为该角色保留**最少**的工具集。
+> - 分析/审查任务优先选择**只读**代理。
+> - 尽可能少地赋予代理编辑权限。
 
 <img width="700" height="160" alt="image" src="https://github.com/user-attachments/assets/42767417-20aa-4bd4-aaf2-cfa0e515b54b" />
 
 *Caption: Agents selection UI in the terminal.*
 
-<h3 id="configure-agents">Configure Agents</h3>
+<h3 id="configure-agents">配置代理</h3>
 
-> Keep agents **in the project** so they're versioned with the repo and evolve via PRs.
+> 将代理**保留在项目中**，以便它们与仓库一起进行版本控制，并通过 PR 进行演进。
 
-<h3 id="agents-quick-start">Quick start</h3>
+<h3 id="agents-quick-start">代理快速启动</h3>
 
-> Update CLI and open the agents panel
+> 更新 CLI 并打开代理面板
 ```bash
 claude update
 /agents
 ```
 
-<h3 id="create-your-core-agents">Create your core agents</h3>
+<h3 id="create-your-core-agents">创建你的核心代理</h3>
 
-> - **planner** (read‑only): turns features/issues into small, testable tasks; outputs a task list or plan.md.
-> - **codegen** (edit‑capable): implements tasks; limited to `src/` + `tests/`.
-> - **tester** (read‑only or patch‑only): writes *one* failing test or a minimal repro.
-> - **reviewer** (read‑only): leaves structured review comments; never edits.
-> - **docs** (edit‑capable): updates `README.md`/`docs/` only.
+> - **规划者** (只读): 将功能/问题转化为小的、可测试的任务；输出任务列表或 plan.md。
+> - **代码生成器** (可编辑): 实现任务；仅限于 `src/` + `tests/`。
+> - **测试员** (只读或补丁): 编写 *一个* 失败的测试或最小的复现。
+> - **评审员** (只读): 留下结构化的评审意见；从不编辑。
+> - **文档** (可编辑): 仅更新 `README.md`/`docs/`。
 
-***Policy** tip: Prefer **patch output** for edit‑capable agents so changes land through your normal Git workflow.*
+***策略**提示：对于具有编辑能力的代理，优先选择**补丁输出**，以便更改通过您的常规 Git 工作流进行。*
 
 <img width="700" height="173" alt="image" src="https://github.com/user-attachments/assets/84bc80de-35b8-4ef7-9b27-f74f7d4a51f9" />
 
 *Caption: Choose only the tools an agent truly needs (e.g., advisory vs editing access).*
 
-<h3 id="example-prompts">Example prompts</h3>
+<h3 id="example-prompts">示例提示</h3>
 
-> Keep prompts short, testable, and repo‑specific. Check them into `agents/`:
+> 保持提示简短、可测试且特定于仓库。将它们签入 `agents/`：
 
 <img width="700" height="217" alt="image" src="https://github.com/user-attachments/assets/b4f92591-ff5c-4775-aec2-051f145b9616" />
 
@@ -652,71 +652,71 @@ Output: A brief rationale + a unified diff or patch.
 If the scenario is unclear, ask exactly one clarifying question.
 ```
 
-<h3 id="expected-output">Expected output</h3>
+<h3 id="expected-output">预期输出</h3>
 
-> Your tester agent should produce a small diff or patch plus a short rationale:
+> 你的测试代理应该生成一个小的差异或补丁以及一个简短的理由：
 
 <img width="700" height="273" alt="image" src="https://github.com/user-attachments/assets/839151ce-02c9-4283-a53b-9dd105802ada" />
 
 *Caption: Example response from the **test‑coverage‑analyzer** agent.*
 
-<h3 id="why-this-shift-matters">Why This Shift Matters</h3>
+<h3 id="why-this-shift-matters">为什么这种转变很重要</h3>
 
-**Operational benefits**
-> - **Less context switching:** you stay in one mental mode; agents do the rest.
-> - **Cleaner PRs:** narrow prompts + limited tools → smaller, reviewable diffs.
-> - **Fewer regressions:** tester/reviewer agents catch gaps before merge.
-> - **Repeatability:** prompts + policies live in the repo and travel with branches.
+**操作优势**
+> - **更少的上下文切换**：你保持在一种思维模式中；代理完成其余工作。
+> - **更清晰的 PR**：狭窄的提示 + 有限的工具 → 更小、可审查的差异。
+> - **更少的回归**：测试员/审查员代理在合并前发现漏洞。
+> - **可重复性**：提示 + 策略存在于仓库中并随分支一起传播。
 
-**Security & governance**
-> - Limit write access by path (e.g., `src/`, `tests/`, `docs/`).
-> - Favor read‑only analysis for high‑risk areas.
-> - Log/commit assistant outputs as patches for auditability.
+**安全与治理**
+> - 按路径限制写入访问（例如，`src/`、`tests/`、`docs/`）。
+> - 优先选择只读分析高风险区域。
+> - 将助手输出记录/提交为补丁以进行可审计性。
 
-<h3 id="a-mindset-shift">A Mindset Shift</h3>
+<h3 id="a-mindset-shift">思维转变</h3>
 
-**Do**
-> - Treat agents as teammates with job descriptions.
-> - Start read‑only; grant write access *last*.
-> - Keep prompts in version control and iterate via PR.
+**做**
+> - 将代理视为具有职位描述的队友。
+> - 从只读开始；**最后**授予写入权限。
+> - 将提示保留在版本控制中，并通过 PR 进行迭代。
 
-**Don't**
-> - Ask one agent to plan, code, and test in a single turn.
-> - Give blanket write permissions.
-> - Accept multi‑file diffs when you asked for one test.
+**不要**
+> - 要求一个代理在一个回合中完成计划、编码和测试。
+> - 授予全面的写入权限。
+> - 当你只要求一个测试时，接受多文件差异。
 
-<h2 id="mcp-integration">MCP Integration</h2>
+<h2 id="mcp-integration">MCP集成</h2>
 
-<h3 id="understanding-mcp-model-context-protocol">Understanding MCP (Model Context Protocol)</h3>
+<h3 id="understanding-mcp-model-context-protocol">理解MCP（模型上下文协议）</h3>
 
-#### What is MCP?
-> MCP extends Claude's capabilities by connecting to external services, databases, APIs, and tools (filesystem, Puppeteer, GitHub, Context7 etc...)
+#### 什么是MCP？
+> MCP通过连接到外部服务、数据库、API和工具（文件系统、Puppeteer、GitHub、Context7等）来扩展Claude的功能。
 
 
-###### **MCP Architecture:**
+###### **MCP架构：**
 ```
-Claude Code ←→ MCP Protocol ←→ MCP Servers ←→ External Services
+Claude Code ←→ MCP协议 ←→ MCP服务器 ←→ 外部服务
 ```
 
-<h3 id="mcp-setup--configuration">MCP Setup & Configuration</h3>
+<h3 id="mcp-setup--configuration">MCP 设置与配置</h3>
 
-###### Basic MCP Commands
+###### 基本 MCP 命令
 ```bash
-claude mcp                   # Interactive MCP configuration
-claude mcp list              # List configured servers            
-claude mcp add <name> <cmd>  # Add new server
-claude mcp remove <name>     # Remove server
+claude mcp                   # 交互式 MCP 配置
+claude mcp list              # 列出已配置的服务器            
+claude mcp add <name> <cmd>  # 添加新服务器
+claude mcp remove <name>     # 移除服务器
 ```
 
-###### MCP Configuration File Location
+###### MCP 配置文件位置
 ```bash
-~/.claude.json      # Global File
-`.mcp.json`         # Project-scoped servers are stored in a File at your project's root directory
+~/.claude.json      # 全局文件
+`.mcp.json`         # 项目范围的服务器存储在项目根目录下的文件中
 ```
 
-<h3 id="popular-mcp-servers">Popular MCP Servers</h3>
+<h3 id="popular-mcp-servers">常用 MCP 服务器</h3>
 
-#### Development Tools
+#### 开发工具
 ```bash
 # npm install -g git-mcp-server         
 
@@ -724,50 +724,50 @@ claude mcp remove <name>     # Remove server
 # claude mcp add github "github-mcp-server --token $GITHUB_TOKEN"
 ```
 
-#### Database Integration  
+#### 数据库集成  
 ```bash
 npm install -g postgres-mcp-server               
 npm install -g mysql-mcp-server                  
 npm install -g sqlite-mcp-server               
 
-# Setup examples may look like this:
+# 设置示例可能如下所示：
 # export POSTGRES_URL="postgresql://user:password@localhost:5432/mydb"
 # claude mcp add postgres "postgres-mcp-server --url $POSTGRES_URL"
 ```
 
-#### MCP Tool Permissions
+#### MCP 工具权限
 
 ```bash
-# Allow specific MCP tools 
+# 允许特定的 MCP 工具 
 claude --allowedTools "mcp__git__commit,mcp__git__push"
 
-# Allow all tools from specific server
+# 允许来自特定服务器的所有工具
 claude --allowedTools "mcp__postgres__*"
 
-# Combined with built-in tools
+# 与内置工具结合使用
 claude --allowedTools "Edit,View,mcp__git__*"
 ```
 
-<h2 id="hooks-system">Hooks System</h2>
+<h2 id="hooks-system">钩子系统</h2>
 
-> This page provides reference documentation for implementing hooks in Claude Code.
+> 本页面提供了在 Claude Code 中实现钩子的参考文档。
 
 <Tip>
-  For a quickstart guide with examples, see [Get started with Claude Code hooks](/en/docs/claude-code/hooks-guide).
+  有关包含示例的快速入门指南，请参阅 [Claude Code 钩子入门](/en/docs/claude-code/hooks-guide)。
 </Tip>
 
-<h3 id="hooks-configuration">Configuration</h3>
+<h3 id="hooks-configuration">配置</h3>
 
-Claude Code hooks are configured in your [settings files](/en/docs/claude-code/settings):
+Claude Code 钩子在您的 [设置文件](/en/docs/claude-code/settings) 中配置：
 
-* `~/.claude/settings.json` - User settings
-* `.claude/settings.json` - Project settings
-* `.claude/settings.local.json` - Local project settings (not committed)
-* Enterprise managed policy settings
+* `~/.claude/settings.json` - 用户设置
+* `.claude/settings.json` - 项目设置
+* `.claude/settings.local.json` - 本地项目设置（不提交）
+* 企业管理策略设置
 
-#### Structure
+#### 结构
 
-Hooks are organized by matchers, where each matcher can have multiple hooks:
+钩子按匹配器组织，每个匹配器可以有多个钩子：
 
 ```json
 {
@@ -787,21 +787,16 @@ Hooks are organized by matchers, where each matcher can have multiple hooks:
 }
 ```
 
-* **matcher**: Pattern to match tool names, case-sensitive (only applicable for
-  `PreToolUse` and `PostToolUse`)
-  * Simple strings match exactly: `Write` matches only the Write tool
-  * Supports regex: `Edit|Write` or `Notebook.*`
-  * Use `*` to match all tools. You can also use empty string (`""`) or leave
-    `matcher` blank.
-* **hooks**: Array of commands to execute when the pattern matches
-  * `type`: Currently only `"command"` is supported
-  * `command`: The bash command to execute (can use `$CLAUDE_PROJECT_DIR`
-    environment variable)
-  * `timeout`: (Optional) How long a command should run, in seconds, before
-    canceling that specific command.
+* **matcher**: 匹配工具名称的模式，区分大小写（仅适用于 `PreToolUse` 和 `PostToolUse`）
+  * 简单字符串精确匹配：`Write` 仅匹配 Write 工具
+  * 支持正则表达式：`Edit|Write` 或 `Notebook.*`
+  * 使用 `*` 匹配所有工具。您也可以使用空字符串 (`""`) 或留空 `matcher`。
+* **hooks**: 当模式匹配时执行的命令数组
+  * `type`: 目前仅支持 `"command"`
+  * `command`: 要执行的 bash 命令（可以使用 `$CLAUDE_PROJECT_DIR` 环境变量）
+  * `timeout`: (可选) 命令应运行多长时间（秒），然后取消该特定命令。
 
-For events like `UserPromptSubmit`, `Notification`, `Stop`, and `SubagentStop`
-that don't use matchers, you can omit the matcher field:
+对于不使用匹配器的事件，如 `UserPromptSubmit`、`Notification`、`Stop` 和 `SubagentStop`，您可以省略匹配器字段：
 
 ```json
 {
@@ -820,11 +815,9 @@ that don't use matchers, you can omit the matcher field:
 }
 ```
 
-#### Project-Specific Hook Scripts
+#### 项目特定的钩子脚本
 
-You can use the environment variable `CLAUDE_PROJECT_DIR` (only available when
-Claude Code spawns the hook command) to reference scripts stored in your project,
-ensuring they work regardless of Claude's current directory:
+您可以使用环境变量 `CLAUDE_PROJECT_DIR`（仅当 Claude Code 启动钩子命令时可用）来引用存储在项目中的脚本，确保它们无论 Claude 的当前目录如何都能正常工作：
 
 ```json
 {
@@ -844,85 +837,77 @@ ensuring they work regardless of Claude's current directory:
 }
 ```
 
-<h3 id="hook-events">Hook Events</h3>
+<h3 id="hook-events">钩子事件</h3>
 
 #### PreToolUse
 
-Runs after Claude creates tool parameters and before processing the tool call.
+在 Claude 创建工具参数之后、处理工具调用之前运行。
 
-**Common matchers:**
+**常用匹配器：**
 
-* `Task` - Subagent tasks (see [subagents documentation](/en/docs/claude-code/sub-agents))
-* `Bash` - Shell commands
-* `Glob` - File pattern matching
-* `Grep` - Content search
-* `Read` - File reading
-* `Edit`, `MultiEdit` - File editing
-* `Write` - File writing
-* `WebFetch`, `WebSearch` - Web operations
+* `Task` - 子代理任务（参见 [子代理文档](/en/docs/claude-code/sub-agents)）
+* `Bash` - Shell 命令
+* `Glob` - 文件模式匹配
+* `Grep` - 内容搜索
+* `Read` - 文件读取
+* `Edit`、`MultiEdit` - 文件编辑
+* `Write` - 文件写入
+* `WebFetch`、`WebSearch` - Web 操作
 
 #### PostToolUse
 
-Runs immediately after a tool completes successfully.
+在工具成功完成之后立即运行。
 
-Recognizes the same matcher values as PreToolUse.
+识别与 PreToolUse 相同的匹配器值。
 
 #### Notification
 
-Runs when Claude Code sends notifications. Notifications are sent when:
+当 Claude Code 发送通知时运行。在以下情况下发送通知：
 
-1. Claude needs your permission to use a tool. Example: "Claude needs your
-   permission to use Bash"
-2. The prompt input has been idle for at least 60 seconds. "Claude is waiting
-   for your input"
+1. Claude 需要您的权限才能使用工具。示例：“Claude 需要您的权限才能使用 Bash”
+2. 提示输入已空闲至少 60 秒。“Claude 正在等待您的输入”
 
 #### UserPromptSubmit
 
-Runs when the user submits a prompt, before Claude processes it. This allows you
-to add additional context based on the prompt/conversation, validate prompts, or
-block certain types of prompts.
+在用户提交提示后、Claude 处理之前运行。这允许您根据提示/对话添加额外上下文、验证提示或阻止某些类型的提示。
 
 #### Stop
 
-Runs when the main Claude Code agent has finished responding. Does not run if
-the stoppage occurred due to a user interrupt.
+当主 Claude Code 代理完成响应时运行。如果由于用户中断而停止，则不运行。
 
 #### SubagentStop
 
-Runs when a Claude Code subagent (Task tool call) has finished responding.
+当 Claude Code 子代理（任务工具调用）完成响应时运行。
 
 #### PreCompact
 
-Runs before Claude Code is about to run a compact operation.
+在 Claude Code 即将运行压缩操作之前运行。
 
-**Matchers:**
+**匹配器：**
 
-* `manual` - Invoked from `/compact`
+* `manual` - 从 `/compact` 调用
 * `auto` - Invoked from auto-compact (due to full context window)
 
 #### SessionStart
 
-Runs when Claude Code starts a new session or resumes an existing session (which
-currently does start a new session under the hood). Useful for loading in
-development context like existing issues or recent changes to your codebase.
+当 Claude Code 启动新会话或恢复现有会话时运行（目前在底层确实会启动新会话）。对于加载开发上下文（如现有问题或代码库的最新更改）很有用。
 
-**Matchers:**
+**匹配器：**
 
-* `startup` - Invoked from startup
-* `resume` - Invoked from `--resume`, `--continue`, or `/resume`
-* `clear` - Invoked from `/clear`
+* `startup` - 从启动调用
+* `resume` - 从 `--resume`、`--continue` 或 `/resume` 调用
+* `clear` - 从 `/clear` 调用
 
-<h3 id="hook-input">Hook Input</h3>
+<h3 id="hook-input">钩子输入</h3>
 
-Hooks receive JSON data via stdin containing session information and
-event-specific data:
+钩子通过 stdin 接收 JSON 数据，其中包含会话信息和事件特定数据：
 
 ```typescript
 {
   // Common fields
   session_id: string
-  transcript_path: string  // Path to conversation JSON
-  cwd: string              // The current working directory when the hook is invoked
+  transcript_path: string  // 对话 JSON 的路径
+  cwd: string              // 钩子被调用时的工作目录
 
   // Event-specific fields
   hook_event_name: string
@@ -930,9 +915,9 @@ event-specific data:
 }
 ```
 
-#### PreToolUse Input
+#### PreToolUse 输入
 
-The exact schema for `tool_input` depends on the tool.
+`tool_input` 的确切 schema 取决于工具。
 
 ```json
 {
@@ -948,9 +933,9 @@ The exact schema for `tool_input` depends on the tool.
 }
 ```
 
-#### PostToolUse Input
+#### PostToolUse 输入
 
-The exact schema for `tool_input` and `tool_response` depends on the tool.
+`tool_input` 和 `tool_response` 的确切 schema 取决于工具。
 
 ```json
 {
@@ -970,7 +955,7 @@ The exact schema for `tool_input` and `tool_response` depends on the tool.
 }
 ```
 
-#### Notification Input
+#### Notification 输入
 
 ```json
 {
@@ -982,7 +967,7 @@ The exact schema for `tool_input` and `tool_response` depends on the tool.
 }
 ```
 
-#### UserPromptSubmit Input
+#### UserPromptSubmit 输入
 
 ```json
 {
@@ -994,11 +979,9 @@ The exact schema for `tool_input` and `tool_response` depends on the tool.
 }
 ```
 
-#### Stop and SubagentStop Input
+#### Stop 和 SubagentStop 输入
 
-`stop_hook_active` is true when Claude Code is already continuing as a result of
-a stop hook. Check this value or process the transcript to prevent Claude Code
-from running indefinitely.
+当 Claude Code 因停止钩子而继续运行时，`stop_hook_active` 为 true。检查此值或处理 transcript 以防止 Claude Code 无限期运行。
 
 ```json
 {
@@ -1009,10 +992,9 @@ from running indefinitely.
 }
 ```
 
-#### PreCompact Input
+#### PreCompact 输入
 
-For `manual`, `custom_instructions` comes from what the user passes into
-`/compact`. For `auto`, `custom_instructions` is empty.
+对于 `manual`，`custom_instructions` 来自用户传递给 `/compact` 的内容。对于 `auto`，`custom_instructions` 为空。
 
 ```json
 {
@@ -1024,7 +1006,7 @@ For `manual`, `custom_instructions` comes from what the user passes into
 }
 ```
 
-#### SessionStart Input
+#### SessionStart 输入
 
 ```json
 {
@@ -1035,163 +1017,140 @@ For `manual`, `custom_instructions` comes from what the user passes into
 }
 ```
 
-<h3 id="hook-output">Hook Output</h3>
+<h3 id="hook-output">钩子输出</h3>
 
-There are two ways for hooks to return output back to Claude Code. The output
-communicates whether to block and any feedback that should be shown to Claude
-and the user.
+钩子有两种方式将输出返回给 Claude Code。输出会传达是否阻塞以及应向 Claude 和用户显示的任何反馈。
 
-#### Simple: Exit Code
+#### 简单：退出代码
 
-Hooks communicate status through exit codes, stdout, and stderr:
+钩子通过退出代码、stdout 和 stderr 传达状态：
 
-* **Exit code 0**: Success. `stdout` is shown to the user in transcript mode
-  (CTRL-R), except for `UserPromptSubmit` and `SessionStart`, where stdout is
-  added to the context.
-* **Exit code 2**: Blocking error. `stderr` is fed back to Claude to process
-  automatically. See per-hook-event behavior below.
-* **Other exit codes**: Non-blocking error. `stderr` is shown to the user and
-  execution continues.
+* **退出代码 0**：成功。`stdout` 在转录模式 (CTRL-R) 下显示给用户，`UserPromptSubmit` 和 `SessionStart` 除外，其中 `stdout` 会添加到上下文中。
+* **退出代码 2**：阻塞错误。`stderr` 会反馈给 Claude 自动处理。请参阅下面的每个钩子事件行为。
+* **其他退出代码**：非阻塞错误。`stderr` 会显示给用户，并继续执行。
 
 <Warning>
-  Reminder: Claude Code does not see stdout if the exit code is 0, except for
-  the `UserPromptSubmit` hook where stdout is injected as context.
+  提醒：如果退出代码为 0，Claude Code 不会看到 `stdout`，`UserPromptSubmit` 钩子除外，其中 `stdout` 作为上下文注入。
 </Warning>
 
-##### Exit Code 2 Behavior
+##### 退出代码 2 行为
 
-| Hook Event         | Behavior                                                           |
+| 钩子事件         | 行为                                                           |
 | ------------------ | ------------------------------------------------------------------ |
-| `PreToolUse`       | Blocks the tool call, shows stderr to Claude                       |
-| `PostToolUse`      | Shows stderr to Claude (tool already ran)                          |
-| `Notification`     | N/A, shows stderr to user only                                     |
-| `UserPromptSubmit` | Blocks prompt processing, erases prompt, shows stderr to user only |
-| `Stop`             | Blocks stoppage, shows stderr to Claude                            |
-| `SubagentStop`     | Blocks stoppage, shows stderr to Claude subagent                   |
-| `PreCompact`       | N/A, shows stderr to user only                                     |
-| `SessionStart`     | N/A, shows stderr to user only                                     |
+| `PreToolUse`       | 阻塞工具调用，向 Claude 显示 stderr                       |
+| `PostToolUse`      | 向 Claude 显示 stderr（工具已运行）                          |
+| `Notification`     | 不适用，仅向用户显示 stderr                                     |
+| `UserPromptSubmit` | 阻塞提示处理，擦除提示，仅向用户显示 stderr |
+| `Stop`             | 阻塞停止，向 Claude 显示 stderr                            |
+| `SubagentStop`     | 阻塞停止，向 Claude 子代理显示 stderr                   |
+| `PreCompact`       | 不适用，仅向用户显示 stderr                                     |
+| `SessionStart`     | 不适用，仅向用户显示 stderr                                     |
 
-#### Advanced: JSON Output
+#### 高级：JSON 输出
 
-Hooks can return structured JSON in `stdout` for more sophisticated control:
+钩子可以在 `stdout` 中返回结构化 JSON，以实现更复杂的控制：
 
-##### Common JSON Fields
+##### 常见 JSON 字段
 
-All hook types can include these optional fields:
+所有钩子类型都可以包含这些可选字段：
 
 ```json
 {
-  "continue": true, // Whether Claude should continue after hook execution (default: true)
-  "stopReason": "string" // Message shown when continue is false
-  "suppressOutput": true, // Hide stdout from transcript mode (default: false)
+  "continue": true, // 钩子执行后 Claude 是否应继续（默认：true）
+  "stopReason": "string" // 当 continue 为 false 时显示的消息
+  "suppressOutput": true, // 在转录模式下隐藏 stdout（默认：false）
 }
 ```
 
-If `continue` is false, Claude stops processing after the hooks run.
+如果 `continue` 为 false，Claude 在钩子运行后停止处理。
 
-* For `PreToolUse`, this is different from `"permissionDecision": "deny"`, which
-  only blocks a specific tool call and provides automatic feedback to Claude.
-* For `PostToolUse`, this is different from `"decision": "block"`, which
-  provides automated feedback to Claude.
-* For `UserPromptSubmit`, this prevents the prompt from being processed.
-* For `Stop` and `SubagentStop`, this takes precedence over any
-  `"decision": "block"` output.
-* In all cases, `"continue" = false` takes precedence over any
-  `"decision": "block"` output.
+* 对于 `PreToolUse`，这与 `"permissionDecision": "deny"` 不同，后者仅阻塞特定的工具调用并向 Claude 提供自动反馈。
+* 对于 `PostToolUse`，这与 `"decision": "block"` 不同，后者提供自动反馈给 Claude。
+* 对于 `UserPromptSubmit`，这会阻止提示被处理。
+* 对于 `Stop` 和 `SubagentStop`，这优先于任何 `"decision": "block"` 输出。
+* 在所有情况下，`"continue" = false` 优先于任何 `"decision": "block"` 输出。
 
-`stopReason` accompanies `continue` with a reason shown to the user, not shown
-to Claude.
+`stopReason` 伴随 `continue`，并向用户显示原因，不向 Claude 显示。
 
-##### `PreToolUse` Decision Control
+##### `PreToolUse` 决策控制
 
-`PreToolUse` hooks can control whether a tool call proceeds.
+`PreToolUse` 钩子可以控制工具调用是否继续。
 
-* `"allow"` bypasses the permission system. `permissionDecisionReason` is shown
-  to the user but not to Claude. (*Deprecated `"approve"` value + `reason` has
-  the same behavior.*)
-* `"deny"` prevents the tool call from executing. `permissionDecisionReason` is
-  shown to Claude. (*`"block"` value + `reason` has the same behavior.*)
-* `"ask"` asks the user to confirm the tool call in the UI.
-  `permissionDecisionReason` is shown to the user but not to Claude.
+* `"allow"` 绕过权限系统。`permissionDecisionReason` 会显示给用户，但不会显示给 Claude。（*已弃用的 `"approve"` 值 + `reason` 具有相同的行为。*）
+* `"deny"` 阻止工具调用执行。`permissionDecisionReason` 会显示给 Claude，并向用户显示。（*`"block"` 值 + `reason` 具有相同的行为。*）
+* `"ask"` 要求用户在 UI 中确认工具调用。
+
 
 ```json
 {
   "hookSpecificOutput": {
     "hookEventName": "PreToolUse",
     "permissionDecision": "allow" | "deny" | "ask",
-    "permissionDecisionReason": "My reason here (shown to user)"
+    "permissionDecisionReason": "我的理由在这里（显示给用户）"
   },
-  "decision": "approve" | "block" | undefined, // Deprecated for PreToolUse but still supported
-  "reason": "Explanation for decision" // Deprecated for PreToolUse but still supported
+  "decision": "approve" | "block" | undefined, // PreToolUse 已弃用但仍受支持
+  "reason": "决策解释" // PreToolUse 已弃用但仍受支持
 }
-```
+##### `PostToolUse` 决策控制
 
-##### `PostToolUse` Decision Control
-
-`PostToolUse` hooks can control whether a tool call proceeds.
-
-* `"block"` automatically prompts Claude with `reason`.
-* `undefined` does nothing. `reason` is ignored.
+`PostToolUse` 钩子可以控制工具调用是否继续。
 
 ```json
 {
   "decision": "block" | undefined,
-  "reason": "Explanation for decision"
+  "reason": "决策解释"
 }
 ```
 
-##### `UserPromptSubmit` Decision Control
+##### `UserPromptSubmit` 决策控制
 
-`UserPromptSubmit` hooks can control whether a user prompt is processed.
+`UserPromptSubmit` 钩子可以控制用户提示是否被处理。
 
-* `"block"` prevents the prompt from being processed. The submitted prompt is
-  erased from context. `"reason"` is shown to the user but not added to context.
-* `undefined` allows the prompt to proceed normally. `"reason"` is ignored.
-* `"hookSpecificOutput.additionalContext"` adds the string to the context if not
-  blocked.
+* `"block"` 阻止提示被处理。提交的提示会从上下文中擦除。`"reason"` 会显示给用户，但不会添加到上下文中。
+* `undefined` 允许提示正常进行。`"reason"` 被忽略。
+* `"hookSpecificOutput.additionalContext"` 如果未被阻止，则将字符串添加到上下文中。
 
 ```json
 {
   "decision": "block" | undefined,
-  "reason": "Explanation for decision",
+  "reason": "决策解释",
   "hookSpecificOutput": {
     "hookEventName": "UserPromptSubmit",
-    "additionalContext": "My additional context here"
+    "additionalContext": "我的附加上下文在这里"
   }
 }
 ```
 
-##### `Stop`/`SubagentStop` Decision Control
+##### `Stop`/`SubagentStop` 决策控制
 
-`Stop` and `SubagentStop` hooks can control whether Claude must continue.
+`Stop` 和 `SubagentStop` 钩子可以控制 Claude 是否必须继续。
 
-* `"block"` prevents Claude from stopping. You must populate `reason` for Claude
-  to know how to proceed.
-* `undefined` allows Claude to stop. `reason` is ignored.
+* `"block"` 阻止 Claude 停止。您必须填充 `reason`，以便 Claude 知道如何继续。
+* `undefined` 允许 Claude 停止。`reason` 被忽略。
 
 ```json
 {
   "decision": "block" | undefined,
-  "reason": "Must be provided when Claude is blocked from stopping"
+  "reason": "当 Claude 被阻止停止时必须提供"
 }
 ```
 
-##### `SessionStart` Decision Control
+##### `SessionStart` 决策控制
 
-`SessionStart` hooks allow you to load in context at the start of a session.
+`SessionStart` 钩子允许您在会话开始时加载上下文。
 
-* `"hookSpecificOutput.additionalContext"` adds the string to the context.
+* `"hookSpecificOutput.additionalContext"` 将字符串添加到上下文中。
 
 ```json
 {
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
-    "additionalContext": "My additional context here"
+    "additionalContext": "我的附加上下文在这里"
   }
 }
 ```
 
-##### Exit Code Example: Bash Command Validation
+##### 退出代码示例：Bash 命令验证
 
 ```python
 #!/usr/bin/env python3
@@ -1202,12 +1161,12 @@ import sys
 # Define validation rules as a list of (regex pattern, message) tuples
 VALIDATION_RULES = [
     (
-        r"\bgrep\b(?!.*\|)",
-        "Use 'rg' (ripgrep) instead of 'grep' for better performance and features",
+        r"\\bgrep\\b(?!.*\\|)",
+        "使用 'rg' (ripgrep) 代替 'grep' 以获得更好的性能和功能",
     ),
     (
-        r"\bfind\s+\S+\s+-name\b",
-        "Use 'rg --files | rg pattern' or 'rg --files -g pattern' instead of 'find -name' for better performance",
+        r"\\bfind\\s+\\S+\\s+-name\\b",
+        "使用 'rg --files | rg pattern' 或 'rg --files -g pattern' 代替 'find -name' 以获得更好的性能",
     ),
 ]
 
@@ -1243,13 +1202,13 @@ if issues:
     sys.exit(2)
 ```
 
-##### JSON Output Example: UserPromptSubmit to Add Context and Validation
+##### JSON 输出示例：UserPromptSubmit 添加上下文和验证
 
 <Note>
-  For `UserPromptSubmit` hooks, you can inject context using either method:
+  对于 `UserPromptSubmit` 钩子，您可以使用以下任一方法注入上下文：
 
-  * Exit code 0 with stdout: Claude sees the context (special case for `UserPromptSubmit`)
-  * JSON output: Provides more control over the behavior
+  * 退出代码 0 并带 stdout：Claude 会看到上下文（`UserPromptSubmit` 的特殊情况）
+  * JSON 输出：提供对行为的更多控制
 </Note>
 
 ```python
@@ -1268,9 +1227,9 @@ except json.JSONDecodeError as e:
 
 prompt = input_data.get("prompt", "")
 
-# Check for sensitive patterns
+# 检查敏感模式
 sensitive_patterns = [
-    (r"(?i)\b(password|secret|key|token)\s*[:=]", "Prompt contains potential secrets"),
+    (r"(?i)\\b(password|secret|key|token)\\s*[:=]", "Prompt contains potential secrets"),
 ]
 
 for pattern, message in sensitive_patterns:
@@ -1278,13 +1237,13 @@ for pattern, message in sensitive_patterns:
         # Use JSON output to block with a specific reason
         output = {
             "decision": "block",
-            "reason": f"Security policy violation: {message}. Please rephrase your request without sensitive information."
+            "reason": "违反安全策略：{message}。请重新表述您的请求，不要包含敏感信息。"
         }
         print(json.dumps(output))
         sys.exit(0)
 
-# Add current time to context
-context = f"Current time: {datetime.datetime.now()}"
+# 将当前时间添加到上下文
+context = f"当前时间：{datetime.datetime.now()}"
 print(context)
 
 """
@@ -1297,11 +1256,11 @@ print(json.dumps({
 }))
 """
 
-# Allow the prompt to proceed with the additional context
+# 允许提示与附加上下文一起进行
 sys.exit(0)
 ```
 
-##### JSON Output Example: PreToolUse with Approval
+##### JSON 输出示例：PreToolUse 带审批
 
 ```python
 #!/usr/bin/env python3
@@ -1318,41 +1277,38 @@ except json.JSONDecodeError as e:
 tool_name = input_data.get("tool_name", "")
 tool_input = input_data.get("tool_input", {})
 
-# Example: Auto-approve file reads for documentation files
+# 示例：自动批准文档文件的文件读取
 if tool_name == "Read":
     file_path = tool_input.get("file_path", "")
     if file_path.endswith((".md", ".mdx", ".txt", ".json")):
         # Use JSON output to auto-approve the tool call
         output = {
             "decision": "approve",
-            "reason": "Documentation file auto-approved",
-            "suppressOutput": True  # Don't show in transcript mode
+            "reason": "文档文件自动批准",
+            "suppressOutput": True  # 在转录模式下不显示
         }
         print(json.dumps(output))
         sys.exit(0)
 
-# For other cases, let the normal permission flow proceed
+# 对于其他情况，让正常的权限流程继续
 sys.exit(0)
 ```
 
-<h3 id="working-with-mcp-tools">Working with MCP Tools</h3>
+### 使用 MCP 工具
 
-Claude Code hooks work seamlessly with
-[Model Context Protocol (MCP) tools](/en/docs/claude-code/mcp). When MCP servers
-provide tools, they appear with a special naming pattern that you can match in
-your hooks.
+Claude Code 钩子与 [模型上下文协议 (MCP) 工具](/en/docs/claude-code/mcp) 无缝协作。当 MCP 服务器提供工具时，它们会以特殊的命名模式出现，您可以在钩子中匹配这些模式。
 
-#### MCP Tool Naming
+#### MCP 工具命名
 
-MCP tools follow the pattern `mcp__<server>__<tool>`, for example:
+MCP 工具遵循 `mcp__<server>__<tool>` 模式，例如：
 
-* `mcp__memory__create_entities` - Memory server's create entities tool
-* `mcp__filesystem__read_file` - Filesystem server's read file tool
-* `mcp__github__search_repositories` - GitHub server's search tool
+* `mcp__memory__create_entities` - 内存服务器的创建实体工具
+* `mcp__filesystem__read_file` - 文件系统服务器的读取文件工具
+* `mcp__github__search_repositories` - GitHub 服务器的搜索工具
 
-#### Configuring Hooks for MCP Tools
+#### 为 MCP 工具配置钩子
 
-You can target specific MCP tools or entire MCP servers:
+您可以针对特定的 MCP 工具或整个 MCP 服务器：
 
 ```json
 {
@@ -1363,7 +1319,7 @@ You can target specific MCP tools or entire MCP servers:
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Memory operation initiated' >> ~/mcp-operations.log"
+            "command": "echo '内存操作已启动' >> ~/mcp-operations.log"
           }
         ]
       },
@@ -1381,99 +1337,91 @@ You can target specific MCP tools or entire MCP servers:
 }
 ```
 
-<h3 id="hooks-examples">Examples</h3>
+### 示例
 
 <Tip>
-  For practical examples including code formatting, notifications, and file protection, see [More Examples](/en/docs/claude-code/hooks-guide#more-examples) in the get started guide.
+  有关包括代码格式化、通知和文件保护在内的实用示例，请参阅入门指南中的 [更多示例](/en/docs/claude-code/hooks-guide#more-examples)。
 </Tip>
 
-<h3 id="security-considerations">Security Considerations</h3>
+### 安全注意事项
 
-#### Disclaimer
+#### 免责声明
 
-**USE AT YOUR OWN RISK**: Claude Code hooks execute arbitrary shell commands on
-your system automatically. By using hooks, you acknowledge that:
+**使用风险自负**：Claude Code 钩子会在您的系统上自动执行任意 shell 命令。通过使用钩子，您承认：
 
-* You are solely responsible for the commands you configure
-* Hooks can modify, delete, or access any files your user account can access
-* Malicious or poorly written hooks can cause data loss or system damage
-* Anthropic provides no warranty and assumes no liability for any damages
-  resulting from hook usage
-* You should thoroughly test hooks in a safe environment before production use
+* 您对您配置的命令负全部责任
+* 钩子可以修改、删除或访问您的用户帐户可以访问的任何文件
+* 恶意或编写不当的钩子可能导致数据丢失或系统损坏
+* Anthropic 不提供任何担保，也不对因使用钩子而造成的任何损害承担任何责任
+* 您应该在生产环境中使用之前，在安全环境中彻底测试钩子
 
-Always review and understand any hook commands before adding them to your
-configuration.
+在将任何钩子命令添加到您的配置之前，请务必审查并理解它们。
 
-##<h2 id="security-best-practices-main">Security Best Practices</h2>
+## 安全最佳实践
 
-Here are some key practices for writing more secure hooks:
+以下是编写更安全的钩子的一些关键实践：
 
-1. **Validate and sanitize inputs** - Never trust input data blindly
-2. **Always quote shell variables** - Use `"$VAR"` not `$VAR`
-3. **Block path traversal** - Check for `..` in file paths
-4. **Use absolute paths** - Specify full paths for scripts (use
-   `$CLAUDE_PROJECT_DIR` for the project path)
-5. **Skip sensitive files** - Avoid `.env`, `.git/`, keys, etc.
+1. **验证和清理输入** - 永远不要盲目信任输入数据
+2. **始终引用 shell 变量** - 使用 `"$VAR"` 而不是 `$VAR`
+3. **阻止路径遍历** - 检查文件路径中的 `..`
+4. **使用绝对路径** - 为脚本指定完整路径（使用 `$CLAUDE_PROJECT_DIR` 作为项目路径）
+5. **跳过敏感文件** - 避免 `.env`、`.git/`、密钥等
 
-#### Configuration Safety
+#### 配置安全
 
-Direct edits to hooks in settings files don't take effect immediately. Claude
-Code:
+直接编辑设置文件中的钩子不会立即生效。Claude Code：
 
-1. Captures a snapshot of hooks at startup
-2. Uses this snapshot throughout the session
-3. Warns if hooks are modified externally
-4. Requires review in `/hooks` menu for changes to apply
+1. 在启动时捕获钩子的快照
+2. 在整个会话中使用此快照
+3. 如果钩子被外部修改，则发出警告
+4. 需要在 `/hooks` 菜单中进行审查才能应用更改
 
-This prevents malicious hook modifications from affecting your current session.
+这可以防止恶意钩子修改影响您当前的会话。
 
-<h3 id="hook-execution-details">Hook Execution Details</h3>
+### 钩子执行详情
 
-* **Timeout**: 60-second execution limit by default, configurable per command.
-  * A timeout for an individual command does not affect the other commands.
-* **Parallelization**: All matching hooks run in parallel
-* **Environment**: Runs in current directory with Claude Code's environment
-  * The `CLAUDE_PROJECT_DIR` environment variable is available and contains the
-    absolute path to the project root directory
-* **Input**: JSON via stdin
-* **Output**:
-  * PreToolUse/PostToolUse/Stop: Progress shown in transcript (Ctrl-R)
-  * Notification: Logged to debug only (`--debug`)
+* **超时**：默认执行限制为 60 秒，可按命令配置。
+  * 单个命令的超时不会影响其他命令。
+* **并行化**：所有匹配的钩子并行运行
+* **环境**：在当前目录中运行，使用 Claude Code 的环境
+  * `CLAUDE_PROJECT_DIR` 环境变量可用，并包含项目根目录的绝对路径
+* **输入**：通过 stdin 的 JSON
+* **输出**：
+  * PreToolUse/PostToolUse/Stop：进度显示在转录中 (Ctrl-R)
+  * Notification：仅记录到调试 (`--debug`)
 
-<h3 id="hooks-debugging">Debugging</h3>
+### 调试
 
-#### Basic Troubleshooting
+#### 基本故障排除
 
-If your hooks aren't working:
+如果您的钩子不起作用：
 
-1. **Check configuration** - Run `/hooks` to see if your hook is registered
-2. **Verify syntax** - Ensure your JSON settings are valid
-3. **Test commands** - Run hook commands manually first
-4. **Check permissions** - Make sure scripts are executable
-5. **Review logs** - Use `claude --debug` to see hook execution details
+1. **检查配置** - 运行 `/hooks` 查看您的钩子是否已注册
+2. **验证语法** - 确保您的 JSON 设置有效
+3. **测试命令** - 首先手动运行钩子命令
+4. **检查权限** - 确保脚本可执行
+5. **审查日志** - 使用 `claude --debug` 查看钩子执行详情
 
-Common issues:
+常见问题：
 
-* **Quotes not escaped** - Use `\"` inside JSON strings
-* **Wrong matcher** - Check tool names match exactly (case-sensitive)
-* **Command not found** - Use full paths for scripts
+* **引号未转义** - 在 JSON 字符串中使用 `\"`
+* **匹配器错误** - 检查工具名称是否完全匹配（区分大小写）
+* **找不到命令** - 对脚本使用完整路径
 
-#### Advanced Debugging
+#### 高级调试
 
-For complex hook issues:
+对于复杂的钩子问题：
 
-1. **Inspect hook execution** - Use `claude --debug` to see detailed hook
-   execution
-2. **Validate JSON schemas** - Test hook input/output with external tools
-3. **Check environment variables** - Verify Claude Code's environment is correct
-4. **Test edge cases** - Try hooks with unusual file paths or inputs
-5. **Monitor system resources** - Check for resource exhaustion during hook
-   execution
-6. **Use structured logging** - Implement logging in your hook scripts
+1. **检查钩子执行** - 使用 `claude --debug` 查看详细的钩子执行
+2. **验证 JSON 模式** - 使用外部工具测试钩子输入/输出
+3. **检查环境变量** - 验证 Claude Code 的环境是否正确
+4. **测试边缘情况** - 尝试使用不寻常的文件路径或输入来测试钩子
+5. **监控系统资源** - 检查钩子执行期间的资源耗尽情况
+6. **使用结构化日志记录** - 在您的钩子脚本中实现日志记录
 
-#### Debug Output Example
+#### 调试输出示例
 
-Use `claude --debug` to see hook execution details:
+使用 `claude --debug` 查看钩子执行详情：
 
 ```
 [DEBUG] Executing hooks for PostToolUse:Write
@@ -1485,69 +1433,69 @@ Use `claude --debug` to see hook execution details:
 [DEBUG] Hook command completed with status 0: <Your stdout>
 ```
 
-Progress messages appear in transcript mode (Ctrl-R) showing:
+进度消息显示在转录模式 (Ctrl-R) 中，显示：
 
-* Which hook is running
-* Command being executed
-* Success/failure status
-* Output or error messages
+* 正在运行哪个钩子
+* 正在执行的命令
+* 成功/失败状态
+* 输出或错误消息
 
 ---
 
-<h1 id="security--permissions">Security & Permissions</h1>
+# 安全与权限
 
-#### Tool Permission Patterns 
+#### 工具权限模式
 ```bash
-# Allow specific tools (read/edit files)
+# 允许特定工具（读/编辑文件）
 claude --allowedTools "Edit,Read"
 
-# Allow tool categories incl. Bash (but still scoped below)
+# 允许工具类别，包括 Bash（但仍受限于以下范围）
 claude --allowedTools "Edit,Read,Bash"
 
-# Scoped permissions (all git commands)
+# 范围权限（所有 git 命令）
 claude --allowedTools "Bash(git:*)"
 
-# Multiple scopes (git + npm)
+# 多个范围（git + npm）
 claude --allowedTools "Bash(git:*),Bash(npm:*)"
 ```
 
-<h3 id="dangerous-mode">Dangerous Mode</h3>
+### 危险模式
 
 > [!Warning]
-> NEVER use in Production systems, shared machines, or any systems with important data
-> Only use with isolated environments like a **Docker container**, using this mode can cause data loss and comprimise your system! 
+> 切勿在生产系统、共享机器或任何包含重要数据的系统中使用
+> 仅在隔离环境（如 **Docker 容器**）中使用，使用此模式可能导致数据丢失并损害您的系统！
 > 
 > `claude --dangerously-skip-permissions`
 
-<h2 id="security-best-practices-main">Security Best Practices</h2>
+## 安全最佳实践
 
-<h3 id="start-restrictive">Start Restrictive</h3>
+### 限制性启动
 
-<h3 id="protect-sensitive-data">Protect Sensitive Data</h3>
+### 保护敏感数据
 
-- **Keep `~/.claude.json` private (`chmod 600`).**
-- **Prefer environment variables for API keys over plain‑text.**
-- Use `--strict-mcp-config` to only load MCP servers from specified config files
+- **保持 `~/.claude.json` 私有 (`chmod 600`)。**
+- **优先使用环境变量而不是纯文本来存储 API 密钥。**
+- 使用 `--strict-mcp-config` 仅从指定的配置文件加载 MCP 服务器
 
-<h1 id="automation--integration">Automation & Integration</h1>
+# 自动化与集成
 
-<h2 id="automation--scripting-with-claude-code">Automation & Scripting with Claude Code</h2>
+## 使用 Claude Code 进行自动化与脚本编写
 
-> GitHub Actions you can copy/paste :p
+> 您可以复制/粘贴的 GitHub Actions :p
 
-1. **Install the Claude GitHub App** on your org/repo (required for Actions to comment on PRs/issues).
-2. In your repo, add a secret **`ANTHROPIC_API_KEY`**  Settings → Secrets and variables → Actions → New repository secret
-3. Copy the workflows below into **`.github/workflows/`**.
-4. Open a **test PR** (or a new issue) to see them run.
+1. **在您的组织/仓库上安装 Claude GitHub App**（Actions 在 PR/issue 上评论所需）。
+2. 在您的仓库中，添加一个秘密 **`ANTHROPIC_API_KEY`** 设置 → 秘密和变量 → Actions → 新仓库秘密
+3. 将以下工作流复制到 **`.github/workflows/`**。
+4. 打开一个**测试 PR**（或新问题）以查看它们运行。
 
 > [!TIP]
-> Pin Actions to a release tag (e.g. `@v1`) when you adopt them long‑term. The snippets below use branch tags for readability.
+> 当您长期采用 Actions 时，请将其固定到发布标签（例如 `@v1`）。下面的代码片段使用分支标签是为了可读性。
 
-<h2 id="auto-pr-review-inline-comments">Auto PR Review (inline comments)</h2>
+<h2 id="auto-pr-review-inline-comments">自动 PR 审查（内联评论）</h2>
 
-> **Creates a structured review (with inline comments) as soon as a PR opens or updates.**
+> **在 PR 打开或更新时，立即创建结构化审查（带内联评论）。**
 
-**File:** `.github/workflows/claude-pr-auto-review.yml`
+**文件：** `.github/workflows/claude-pr-auto-review.yml`
 
 ```yaml
 name: Auto review PRs
@@ -1571,11 +1519,11 @@ jobs:
         uses: anthropics/claude-code-action@main
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Claude will fetch the diff and leave inline comments
+          # Claude 将获取差异并留下内联评论
           direct_prompt: |
-            Review this pull request’s diff for correctness, readability, testing, performance, and DX.
-            Prefer specific, actionable suggestions. Use inline comments where relevant.
-          # GitHub tools permitted during the run:
+            审查此拉取请求的差异，以检查正确性、可读性、测试、性能和开发体验。
+            优先提供具体的、可操作的建议。在相关的地方使用内联评论。
+          # 运行期间允许的 GitHub 工具：
           allowed_tools: >-
             mcp__github__get_pull_request_diff,
             mcp__github__create_pending_pull_request_review,
@@ -1583,11 +1531,11 @@ jobs:
             mcp__github__submit_pending_pull_request_review
 ```
 
-<h2 id="security-review-on-every-pr">Security Review on Every PR</h2>
+<h2 id="security-review-on-every-pr">每次 PR 上的安全审查</h2>
 
-> **Runs a focused security scan and comments findings directly on the PR.**
+> **运行有针对性的安全扫描，并将发现的问题直接评论到 PR 上。**
 
-**File:** `.github/workflows/claude-security-review.yml`
+**文件：** `.github/workflows/claude-security-review.yml`
 
 ```yaml
 name: Security Review
@@ -1612,17 +1560,17 @@ jobs:
         with:
           claude-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
           comment-pr: true
-          # Optional:
-          # exclude-directories: "docs,examples"
+          # 可选：
+          # 排除目录："docs,examples"
           # claudecode-timeout: "20"
           # claude-model: "claude-3-5-sonnet-20240620"
 ```
 
-<h2 id="issue-triage-suggest-labels--severity">Issue Triage (suggest labels & severity)</h2>
+<h2 id="issue-triage-suggest-labels--severity">问题分类（建议标签和严重性）</h2>
 
-> **When a new issue opens, Claude proposes labels/severity and posts a tidy triage comment. You can enable **auto‑apply labels** by flipping a single flag**
+> **当新问题打开时，Claude 会建议标签/严重性并发布整洁的分类评论。您可以通过翻转一个标志来启用**自动应用标签**。**
 
-**File:** `.github/workflows/claude-issue-triage.yml`
+**文件：** `.github/workflows/claude-issue-triage.yml`
 
 ```yaml
 name: Claude Issue Triage
@@ -1647,13 +1595,13 @@ jobs:
         run: |
           TITLE="${{ github.event.issue.title }}"
           BODY="${{ github.event.issue.body }}"
-          # naive similar search by title words
+          # 按标题词进行简单的相似搜索
           Q=$(echo "$TITLE" | tr -dc '[:alnum:] ' | awk '{print $1" "$2" "$3" "$4}')
           gh api -X GET search/issues -f q="repo:${{ github.repository }} is:issue $Q" -f per_page=5 > similars.json
           echo "$TITLE" > title.txt
           echo "$BODY" > body.txt
 
-      - name: Ask Claude for triage JSON
+      - name: 请求 Claude 进行分类 JSON
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -1661,23 +1609,23 @@ jobs:
           {
             "model": "${{ env.CLAUDE_MODEL }}",
             "max_tokens": 1500,
-            "system": "You are a pragmatic triage engineer. Be specific, cautious with duplicates.",
+            "system": "你是一名务实的分类工程师。要具体，对重复项要谨慎。",
             "messages": [{
               "role": "user",
               "content": [{
                 "type":"text",
-                "text":"Given the issue and similar candidates, produce STRICT JSON with keys: labels (array of strings), severity (one of: low, medium, high, critical), duplicate_url (string or empty), comment_markdown (string brief). Do not include any extra keys."
+                "text":"根据问题和类似的候选，生成带有键的严格 JSON：labels（字符串数组）、severity（以下之一：low、medium、high、critical）、duplicate_url（字符串或空）、comment_markdown（简短字符串）。不要包含任何额外的键。"
               },
               {"type":"text","text":"Issue title:\n"},
-              {"type":"text","text": (include from file) },
+              {"type":"text","text": "$(cat title.txt)" },
               {"type":"text","text":"\n\nIssue body:\n"},
-              {"type":"text","text": (include from file) },
+              {"type":"text","text": "$(cat body.txt)" },
               {"type":"text","text":"\n\nSimilar issues (JSON):\n"},
-              {"type":"text","text": (include from file) }]
+              {"type":"text","text": "$(cat similars.json)" }]
             }]
           }
           JSON
-          # Inject files safely
+          # 安全注入文件
           jq --arg title "$(cat title.txt)" '.messages[0].content[2].text = $title' payload.json \
           | jq --arg body "$(cat body.txt)" '.messages[0].content[4].text = $body' \
           | jq --arg sims "$(cat similars.json)" '.messages[0].content[6].text = $sims' > payload.final.json
@@ -1688,11 +1636,11 @@ jobs:
             -H "content-type: application/json" \
             -d @payload.final.json > out.json
           jq -r '.content[0].text' out.json > triage.json || echo '{}' > triage.json
-          # Validate JSON to avoid posting garbage
+          # 验证 JSON 以避免发布垃圾信息
           jq -e . triage.json >/dev/null 2>&1 || echo '{"labels":[],"severity":"low","duplicate_url":"","comment_markdown":"(triage failed to parse)"}' > triage.json
 
-      - name: Apply labels (optional)
-        if: ${{ false }} # flip to `true` to auto-apply labels
+      - name: 应用标签（可选）
+        if: ${{ false }} # 翻转为 `true` 以自动应用标签
         uses: actions/github-script@v7
         with:
           script: |
@@ -1706,16 +1654,16 @@ jobs:
               })
             }
 
-      - name: Post triage comment
+      - name: 发布分类评论
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs')
             const triage = JSON.parse(fs.readFileSync('triage.json','utf8'))
-            const md = `### 🤖 Triage
-            - **Suggested labels:** ${triage.labels?.join(', ') || '—'}
-            - **Severity:** ${triage.severity || '—'}
-            ${triage.duplicate_url ? `- **Possible duplicate:** ${triage.duplicate_url}\n` : ''}
+            const md = `### 🤖 分类
+            - **建议标签：** ${triage.labels?.join(', ') || '—'}
+            - **严重性：** ${triage.severity || '—'}
+            ${triage.duplicate_url ? `- **可能的重复项：** ${triage.duplicate_url}\n` : ''}
             ---
             ${triage.comment_markdown || ''}`
             await github.rest.issues.createComment({
@@ -1727,20 +1675,20 @@ jobs:
 ```
 
 > [!NOTE]
-> The triage workflow posts a **suggestion comment** by default. Flip the `Apply labels` step to `true` if you want labels applied automatically.
+> 默认情况下，分类工作流会发布**建议评论**。如果您希望自动应用标签，请将“应用标签”步骤翻转为 `true`。
 >
-> ### Configuration & Customization
-> - **Model selection**: set `CLAUDE_MODEL` (e.g., `claude-3-5-sonnet-20240620`) where shown.
-> - **Secrets**: `ANTHROPIC_API_KEY` is required. The built‑in `GITHUB_TOKEN` is sufficient for posting comments and applying labels.
-> - **Permissions**: each workflow declares the least privileges it needs (`pull-requests: write` and/or `issues: write`). Adjust only if your org requires stricter policies.
-> - **Scope**: use `paths:` filters on triggers to limit when workflows run (e.g., only for `/src` or exclude `/docs`).
-> 
-> ### Troubleshooting
-> Check the **Actions logs** first—most issues are missing secrets/permissions or a mis‑indented YAML block.
-> - **No comments appear on PRs**: Verify the Claude GitHub App is installed and the workflow has `pull-requests: write` permission.
-> - **403 when applying labels**: Ensure the job or step has `issues: write`. The default `GITHUB_TOKEN` must have access to this repo.
-> - **Anthropic API errors**: Confirm `ANTHROPIC_API_KEY` is set at repository (or org) level and not expired.
-> - **“YAML not well‑formed”**: Validate spacing—two spaces per nesting level; no tabs.
+> ### 配置与自定义
+> - **模型选择**：在所示位置设置 `CLAUDE_MODEL`（例如，`claude-3-5-sonnet-20240620`）。
+> - **秘密**：`ANTHROPIC_API_KEY` 是必需的。内置的 `GITHUB_TOKEN` 足以发布评论和应用标签。
+> - **权限**：每个工作流都声明了其所需的最低权限（`pull-requests: write` 和/或 `issues: write`）。仅当您的组织需要更严格的策略时才进行调整。
+> - **范围**：在触发器上使用 `paths:` 过滤器来限制工作流的运行时间（例如，仅适用于 `/src` 或排除 `/docs`）。
+>
+> ### 故障排除
+> 首先检查 **Actions 日志**——大多数问题是缺少秘密/权限或 YAML 块缩进错误。
+> - **PR 上没有评论出现**：验证 Claude GitHub App 是否已安装，并且工作流具有 `pull-requests: write` 权限。
+> - **应用标签时出现 403 错误**：确保作业或步骤具有 `issues: write` 权限。默认的 `GITHUB_TOKEN` 必须有权访问此仓库。
+> - **Anthropic API 错误**：确认 `ANTHROPIC_API_KEY` 已在仓库（或组织）级别设置且未过期。
+> - **“YAML 格式不正确”**：验证间距——每个嵌套级别两个空格；没有制表符。
 
 
 ---
@@ -1748,66 +1696,62 @@ jobs:
 <h1 id="help--troubleshooting">Help & Troubleshooting</h1>
 
 > [!TIP]
-> **Q:`claude` not found, but `npx claude` works?**
-> > **A: Your `PATH` is missing the npm global bin. See the `PATH` issue section for [`Windows`](#windowspath) or [`Linux`](#linuxpath)**
+> **问：`claude` 未找到，但 `npx claude` 可以工作？**
+> > **答：您的 `PATH` 缺少 npm 全局 bin。请参阅 [`Windows`](#windowspath) 或 [`Linux`](#linuxpath) 的 `PATH` 问题部分**
 >
-> **Q:**   **Which Node.js version do I need?** 
-> > **A:**   **Node.js **18+** (ideally **20+**). Check with `node --version`.**
+> **问：需要哪个 Node.js 版本？** 
+> > **答：Node.js **18+**（最好是 **20+**）。使用 `node --version` 检查。
 >
-> **Q: Where do I see logs**  
-> > **A: Run `claude doctor` and `claude --verbose` the diagnostic window will point to log locations.**
+> **问：在哪里查看日志**  
+> > **答：运行 `claude doctor` 和 `claude --verbose`，诊断窗口将指向日志位置。
 >
-> **Q: Do I need to reboot after editing PATH?** 
-> > **A: No reboot required, but you <mark>must</mark> open a <mark>new</mark> terminal window.**
+> **问：编辑 PATH 后需要重启吗？** 
+> > **答：无需重启，但您<mark>必须</mark>打开一个<mark>新</mark>终端窗口。
 
 <table><td>
   
-<h2 id="debug-quick-commands">Debug Quick Commands</h2>
+<h2 id="debug-quick-commands">调试快速命令</h2>
 
-*Check the output of `claude doctor` for log locations and environment checks.*
+*检查 `claude doctor` 的输出，了解日志位置和环境检查。*
 
 > [!Note]
 > 
 > ```bash
-> claude                  # Open Claude UI (if on PATH)
-> claude --version        # Show CLI version (e.g., 1.0.xx)
-> claude update           # Update the CLI (if supported)
+> claude                  # 打开 Claude UI（如果在 PATH 中）
+> claude --version        # 显示 CLI 版本（例如 1.0.xx）
+> claude update           # 更新 CLI（如果支持）
 > 
-> claude doctor           # Open diagnostic / debug window
-> npx claude /doctor      # Opens diagnostic/debug window
+> claude doctor           # 打开诊断/调试窗口
+> npx claude /doctor      # 打开诊断/调试窗口
 > 
-> claude --debug          # Launch claude with diagnostics
-> claude --verbose        # Verbose logging
+> claude --debug          # 启动带有诊断的 Claude
+> claude --verbose        # 详细日志记录
 > 
-> where claude            # Windows (cmd)
-> which claude            # macOS/Linux (bash/zsh)
+> where claude            # Windows（cmd）
+> which claude            # macOS/Linux（bash/zsh）
 > 
-> npm bin -g              # Linux Verify your global bin path
-> npm prefix -g           # Windows Verify your global bin path
+> npm bin -g              # Linux 验证全局 bin 路径
+> npm prefix -g           # Windows 验证全局 bin 路径
 > ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 </td></table>
 
 <table><td>
 
-<h2 id="linuxpath">Path Temp Fix</h2>
+<h2 id="linuxpath">PATH 临时修复</h2>
 
-**Your **PATH** likely doesn’t include the global npm bin directory.**
+**您的 **PATH** 可能不包含全局 npm bin 目录。**
 
 > [!Note]
 > 
-> #### Windows (CMD):
+> #### Windows (CMD)：
 > ```bash
 > set PATH=%USERPROFILE%\AppData\Roaming\npm;C:\Program Files\nodejs;%PATH%
 > where claude
 > claude --debugg
 > ```
-> #### Windows (PowerShell):
+> #### Windows (PowerShell)：
 > ```powershell
 > $env:Path = "$env:USERPROFILE\AppData\Roaming\npm;C:\Program Files\nodejs;$env:Path"
 > where claude
@@ -1819,36 +1763,31 @@ jobs:
 > which claude
 > claude doctor
 > ```
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 </td></table>
 
 
 <table><td>
 
-<h2 id="windowspath">Windows Path Perm Fix</h2>
+<h2 id="windowspath">Windows PATH 永久修复</h2>
 
-**Replace `<you>` with your own Windows username (without the angle brackets)**
+**将 `<you>` 替换为您自己的 Windows 用户名（不带尖括号）**
 
-- **Start → type: <kbd>Environment Variables</kbd>**
-- **Open <kbd>Edit the system environment variables</kbd> → <kbd>Environment Variables</kbd>**
-- **Under <kbd>User variables for</kbd> <mark><you></mark> select `Path` → `Edit` → `New` add:**
+- **开始 → 输入：<kbd>环境变量</kbd>**
+- **打开 <kbd>编辑系统环境变量</kbd> → <kbd>环境变量</kbd>**
+- **在 <kbd>用户变量</kbd> <mark><you></mark> 下选择 `Path` → `编辑` → `新建` 添加：**
 
 ```path
 C:\Users\<you>\AppData\Roaming\npm
 C:\Program Files\nodejs</kbd>
 ```
-> **Optional locations to add:**
+> **可选添加位置：**
 ```path
 C:\Users\<you>\.claude\local\bin
 C:\Users\<you>\.local\bin
 ```
-- **Remove duplicates, any entry containing `%PATH%`, and stray quotes (`"`). Click `OK`.**
-- **Open a `new` Command Prompt/PowerShell and verify:**
+- **删除重复项、任何包含 `%PATH%` 的条目以及多余的引号 (`"`)。单击 `OK`。**
+- **打开一个新的命令提示符/PowerShell 并验证：**
 ```C
 where claude
 claude doctor
@@ -1867,26 +1806,22 @@ claude doctor
 > npx claude doctor
 > ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 </td></table>
 
 <table><td>
 
-<h3 id="installation--nodejs-issues">Installation / Node.js Issues</h3>
+<h3 id="installation--nodejs-issues">安装 / Node.js 问题</h3>
 
-**Must be Node 18+ (20+ recommended)**
+**必须是 Node 18+（推荐 20+）**
 ```bash
 node --version
 ```
-**Clean uninstall**  
+**干净卸载**  
 ```bash                         
 npm uninstall -g @anthropic-ai/claude-code    
 ```
-**Fresh install**
+**全新安装**
 ```bash
 npm install  -g @anthropic-ai/claude-code 
 ```
@@ -1895,33 +1830,33 @@ npm install  -g @anthropic-ai/claude-code
 
 <table><td>
 
-<h3 id="authentication-issues">Authentication Issues</h3>
-> *Verify your Anthropic API key is available to the CLI.*
+<h3 id="authentication-issues">身份验证问题</h3>
+> *验证您的 Anthropic API 密钥是否可用于 CLI。*
 
-**PowerShell (Windows):**
+**PowerShell (Windows)：**
 ```powershell
 echo $env:ANTHROPIC_API_KEY
 claude -p "test" --verbose
 ```
 
-**bash/zsh (macOS/Linux):**
+**bash/zsh (macOS/Linux)：**
 ```bash
 echo $ANTHROPIC_API_KEY
 claude -p "test" --verbose
 ```
-*If the variable is empty set it for your shell/profile or use your OS keychain/secrets manager.*
+*如果变量为空，请为您的 shell/配置文件设置它，或使用您的操作系统密钥链/秘密管理器。*
 
 </td></table>
 
 <table><td>
 
-<h3 id="permission--allowed-tools-issues">Permission / Allowed Tools Issues</h3>
+<h3 id="permission--allowed-tools-issues">权限 / 允许的工具问题</h3>
 
-**Inspect permissions**
+**检查权限**
 ```bash
 claude config get allowedTools
 ```
-**Reset permissions**
+**重置权限**
 ```bash
 claude config set allowedTools "[]"
 ```
@@ -1934,13 +1869,13 @@ claude config set allowedTools '["Edit","View"]'
 
 <table><td>
 
-<h3 id="mcp-model-context-protocol-issues">MCP (Model Context Protocol) Issues</h3>
+<h3 id="mcp-model-context-protocol-issues">MCP（模型上下文协议）问题</h3>
 
-> **Debug MCP servers**
+> **调试 MCP 服务器**
 ```bash
 claude --mcp-debug
 ```
-> **List & remove MCP servers**
+> **列出并删除 MCP 服务器**
 ```bash
 claude mcp list
 claude mcp remove <server-name>
@@ -1950,36 +1885,36 @@ claude mcp remove <server-name>
 
 <table><td>
 
-<h2 id="full-clean-reinstall-windows--powershell">Full Clean Reinstall (Windows / PowerShell)</h2>
+<h2 id="full-clean-reinstall-windows--powershell">完全干净重新安装（Windows / PowerShell）</h2>
 
 > [!Caution]
->  **The following removes Claude Code binaries, caches, and config under your user profile**
+>  **以下将删除您用户配置文件下的 Claude Code 二进制文件、缓存和配置**
 
 
-> 1) Uninstall the global npm package
+> 1) 卸载全局 npm 包
 ```powershell
 npm uninstall -g @anthropic-ai/claude-code
 ```
 
-> 2) Remove leftover shim files
+> 2) 删除剩余的 shim 文件
 ```powershell
 Remove-Item -LiteralPath "$env:USERPROFILE\AppData\Roaming\npm\claude*" -Force -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath "$env:USERPROFILE\AppData\Roaming\npm\node_modules\@anthropic-ai\claude-code" -Recurse -Force -ErrorAction SilentlyContinue
 ```
 
-> 3) Delete cached installer & native files
+> 3) 删除缓存的安装程序和本地文件
 ```powershell
 Remove-Item -LiteralPath "$env:USERPROFILE\.claude\downloads\*" -Recurse -Force -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath "$env:USERPROFILE\.claude\local\bin\claude.exe" -Force -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath "$env:USERPROFILE\.claude\local" -Recurse -Force -ErrorAction SilentlyContinue
 ```
 
-> 4) Remove config and project-local files
+> 4) 删除配置和项目本地文件
 ```powershell
 Remove-Item -LiteralPath "$env:USERPROFILE\.claude.json" -Force -ErrorAction SilentlyContinue
 Remove-Item -LiteralPath "$env:USERPROFILE\.claude" -Recurse -Force -ErrorAction SilentlyContinue
 ```
-> 5) Reinstall
+> 5) 重新安装
 ```powershell
 npm install -g @anthropic-ai/claude-code
 ```
@@ -1989,9 +1924,9 @@ npm install -g @anthropic-ai/claude-code
 
 <table><td>
 
-<h2 id="one-shot-health-check-copypaste">One‑Shot Health Check (copy/paste)</h2>
+<h2 id="one-shot-health-check-copypaste">一次性健康检查（复制/粘贴）</h2>
 
-**Windows (PowerShell):**
+**Windows (PowerShell)：**
 ```powershell
 Write-Host "`n=== Node & npm ==="; node --version; npm --version
 Write-Host "`n=== Where is claude? ==="; where claude
@@ -1999,7 +1934,7 @@ Write-Host "`n=== Try doctor ==="; try { claude doctor } catch { Write-Host "cla
 Write-Host "`n=== API key set? ==="; if ($env:ANTHROPIC_API_KEY) { "Yes" } else { "No" }
 ```
 
-**macOS/Linux (bash/zsh):**
+**macOS/Linux (bash/zsh)：**
 ```bash
 echo "=== Node & npm ==="; node --version; npm --version
 echo "=== Where is claude? ==="; which claude || echo "claude not on PATH"
@@ -2007,7 +1942,7 @@ echo "=== Try doctor ==="; claude doctor || true
 echo "=== API key set? ==="; [ -n "$ANTHROPIC_API_KEY" ] && echo Yes || echo No
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 
 </td></table>
 
@@ -2015,46 +1950,46 @@ echo "=== API key set? ==="; [ -n "$ANTHROPIC_API_KEY" ] && echo Yes || echo No
 
 <table><td>
 
-<h2 id="appendix-useful-paths">Appendix: Useful Paths</h2>
+<h2 id="appendix-useful-paths">附录：有用路径</h2>
 
-- **Windows npm global bin:** `C:\Users\<you>\AppData\Roaming\npm`
-- **Windows Node.js:** `C:\Program Files\nodejs`
-- **Claude local data (Win):** `C:\Users\<you>\.claude\`
-- **Claude config (Win):** `C:\Users\<you>\.claude.json`
-- **macOS/Linux npm global bin:** `$(npm config get prefix)/bin` (often `/usr/local/bin` or `$HOME/.npm-global/bin`)
+- **Windows npm 全局 bin：** `C:\Users\<you>\AppData\Roaming\npm`
+- **Windows Node.js：** `C:\Program Files\nodejs`
+- **Claude 本地数据 (Win)：** `C:\Users\<you>\.claude\`
+- **Claude 配置 (Win)：** `C:\Users\<you>\.claude.json`
+- **macOS/Linux npm 全局 bin：** `$(npm config get prefix)/bin`（通常是 `/usr/local/bin` 或 `$HOME/.npm-global/bin`）
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 
 </td></table>
 
 
-## Best Practices
+## 最佳实践
 
-> Curated guidance for safe, fast, and correct use of the Claude Code CLI and interactive REPL. All commands and flags here match the current Anthropic docs as of **Aug 23, 2025**.
+> 针对 Claude Code CLI 和交互式 REPL 的安全、快速和正确使用精选指南。此处所有命令和标志均与截至 **2025 年 8 月 23 日** 的当前 Anthropic 文档匹配。
 
-<h2 id="effective-prompting">Effective Prompting</h2>
+<h2 id="effective-prompting">有效提示</h2>
 
 ```bash
-# Good: Specific and detailed
-claude "Review UserAuth.js for security vulnerabilities, focusing on JWT handling"
+# 良好：具体且详细
+claude "审查 UserAuth.js 中的安全漏洞，重点关注 JWT 处理"
 
-# Bad: Vague
-claude "check my code"
+# 糟糕：模糊
+claude "检查我的代码"
 ```
 
-Tip: `claude "query"` starts the interactive REPL pre-seeded with your prompt; `claude -p "query"` runs **print mode** (non‑interactive) and exits.
+提示：`claude "query"` 启动交互式 REPL，并预设您的提示；`claude -p "query"` 运行**打印模式**（非交互式）并退出。
 
 ---
 
-<h2 id="security-best-practices-main">Security Best Practices</h2>
+<h2 id="security-best-practices-main">安全最佳实践</h2>
 
-1. **Start with minimal permissions**
-   - Prefer explicit allows and denies, either on the CLI or in settings files.
+1. **以最小权限开始**
+   - 优先在 CLI 或设置文件中明确允许和拒绝。
    ```bash
-   # Allow only what you need for this run
+   # 仅允许本次运行所需权限
    claude --allowedTools "Read" "Grep" "LS" "Bash(npm run test:*)"
    ```
-   Or commit a project policy at `.claude/settings.json`:
+   或在 `.claude/settings.json` 提交项目策略：
    ```json
    {
      "permissions": {
@@ -2064,95 +1999,95 @@ Tip: `claude "query"` starts the interactive REPL pre-seeded with your prompt; `
    }
    ```
 
-2. **Handle secrets correctly**
-   - Use environment variables for SDK/automation flows:
+2. **正确处理秘密**
+   - 在 SDK/自动化流程中使用环境变量：
    ```bash
-   export ANTHROPIC_API_KEY="your_key"   # for SDK/print mode
+   export ANTHROPIC_API_KEY="your_key"   # 用于 SDK/打印模式
    ```
-   - In the interactive REPL, prefer `/login` instead of hard‑coding tokens.
-   - Deny access to sensitive files in settings (replaces older `ignorePatterns`):
+   - 在交互式 REPL 中，优先使用 `/login` 而不是硬编码令牌。
+   - 在设置中拒绝访问敏感文件（替换旧的 `ignorePatterns`）：
    ```json
    { "permissions": { "deny": ["Read(./.env)", "Read(./.env.*)", "Read(./secrets/**)"] } }
    ```
 
-3. **Audit permissions regularly**
+3. **定期审计权限**
    ```bash
-   # Project settings
+   # 项目设置
    claude config list
    claude config get permissions.allow
    claude config get permissions.deny
 
-   # Global settings
+   # 全局设置
    claude config list -g
    ```
 
-4. **Avoid bypass modes in production**
-   - Do **not** use `--dangerously-skip-permissions` outside isolated/dev sandboxes.
-   - For unattended runs, combine narrow `--allowedTools` with `--disallowedTools` and project settings.
+4. **避免在生产环境中使用绕过模式**
+   - 在隔离/开发沙箱之外，**不要**使用 `--dangerously-skip-permissions`。
+   - 对于无人值守的运行，将狭窄的 `--allowedTools` 与 `--disallowedTools` 和项目设置结合使用。
 
 ---
 
-<h2 id="performance-tips">Performance Tips</h2>
+<h2 id="performance-tips">性能提示</h2>
 
-1. **Use machine‑readable output in automations**
+1. **在自动化中使用机器可读的输出**
    ```bash
    claude -p "summarize this error log" --output-format json
-   # valid: text | json | stream-json
+   # 有效值：text | json | stream-json
    ```
 
-2. **Bound non‑interactive work**
+2. **限制非交互式工作**
    ```bash
    claude -p "run type checks and summarize failures" --max-turns 3
-   # optionally also bound thinking:
+   # 也可以选择限制思考：
    export MAX_THINKING_TOKENS=20000
    ```
 
-3. **Keep sessions tidy**
+3. **保持会话整洁**
    ```bash
-   # Retain recent sessions only (default is 30 days)
+   # 仅保留最近的会话（默认为 30 天）
    claude config set -g cleanupPeriodDays 20
    ```
 
-4. **Limit context scope**
+4. **限制上下文范围**
    ```bash
-   # Grant access only to relevant paths to reduce scanning/noise
+   # 仅授予对相关路径的访问权限，以减少扫描/噪音
    claude --add-dir ./services/api ./packages/ui
    ```
 
-5. **Pick the right model**
-   - CLI aliases: `--model sonnet` or `--model opus` (latest of that family).
-   - For reproducibility in settings, pin a full model ID (e.g., `"claude-3-5-sonnet-20241022"`).
+5. **选择正确的模型**
+   - CLI 别名：`--model sonnet` 或 `--model opus`（该系列的最新版本）。
+   - 为了在设置中实现可重现性，请固定完整的模型 ID（例如，`"claude-3-5-sonnet-20241022"`）。
 
 ---
 
-<h2 id="monitoring--alerting">Monitoring & Alerting</h2>
+<h2 id="monitoring--alerting">监控与警报</h2>
 
-**1) Health checks**  
-Use the built‑in **doctor** command to verify installation and environment.
+**1) 健康检查**  
+使用内置的 **doctor** 命令验证安装和环境。
 ```bash
-# Every 15 minutes
+# 每 15 分钟
 */15 * * * * /usr/local/bin/claude doctor >/dev/null 2>&1 || \
 mail -s "Claude Code doctor failed" admin@company.com </dev/null
 ```
 
-**2) Log analysis batch job**
+**2) 日志分析批处理作业**
 ```bash
-# Daily analysis with non-interactive JSON output (print mode)
+# 每日分析，带非交互式 JSON 输出（打印模式）
 0 6 * * * tail -1000 /var/log/app.log | \
 claude -p "Analyze errors, regressions, and suspect patterns; output JSON." \
 --output-format json > /tmp/daily-analysis.json
 ```
 
-**3) Telemetry (optional)**  
-Claude Code emits OpenTelemetry metrics/events. Set exporters in settings/env (e.g., OTLP) and ship to your observability stack (Datadog, Honeycomb, Prometheus/Grafana, etc.).
+**3) 遥测（可选）**  
+Claude Code 发送 OpenTelemetry 指标/事件。在设置/环境变量中设置导出器（例如，OTLP），并发送到您的可观测性堆栈（Datadog、Honeycomb、Prometheus/Grafana 等）。
 
 ---
 
-<h2 id="collaboration-best-practices">Collaboration Best Practices</h2>
+<h2 id="collaboration-best-practices">协作最佳实践</h2>
 
-<h3 id="team-workflows">Team Workflows</h3>
+<h3 id="team-workflows">团队工作流</h3>
 
-**1) Share versioned configuration**
+**1) 分享版本化配置**
 ```jsonc
 // .claude/settings.json (checked into the repo)
 {
@@ -2160,66 +2095,68 @@ Claude Code emits OpenTelemetry metrics/events. Set exporters in settings/env (e
     "allow": ["Read", "Grep", "LS", "Bash(npm run lint)", "Bash(npm run test:*)"],
     "deny":  ["WebFetch", "Read(./.env)", "Read(./.env.*)", "Read(./secrets/**)"]
   },
-  // Pin a model here for reproducibility if desired, using a full model ID:
+  // 如果需要可重现性，在此处固定模型，使用完整的模型 ID：
   "model": "claude-3-5-sonnet-20241022"
 }
 ```
 
-**2) Documentation automation**
+**2) 文档自动化**
 ```bash
-# Update docs with explicit tasks
+# 使用明确的任务更新文档
 claude "Update README.md to reflect the latest API endpoints and examples."
 claude "Generate TypeScript types from schema.prisma and write to /types."
 ```
 
-**3) Code review standards**
+**3) 代码审查标准**
 ```bash
-# Review a local diff with constrained tools
+# 使用受限工具审查本地差异
 git fetch origin main
 git diff origin/main...HEAD > /tmp/diff.patch
 claude --allowedTools "Read" "Grep" "Bash(git:*)" \
   "Review /tmp/diff.patch using team standards:
-   - Security best practices
-   - Performance considerations
-   - Code style compliance
-   - Test coverage adequacy"
+   - 安全最佳实践
+   - 性能考量
+   - 代码风格合规性
+   - 测试覆盖率充分性"
 ```
 
-<h3 id="knowledge-sharing">Knowledge Sharing</h3>
+<h3 id="knowledge-sharing">知识共享</h3>
 
-**1) Project runbooks**
+**1) 项目运行手册**
 ```bash
 claude "Create a deployment runbook for this app: steps, checks, rollback."
 claude "Document onboarding for new developers: setup, commands, conventions."
 ```
 
-**2) Architecture docs**
+**2) 架构文档**
 ```bash
 claude "Update architecture docs to reflect new microservices."
 claude "Create sequence diagrams for the authentication flow."
 ```
 
-> Tip: Keep durable context in **CLAUDE.md** at the project root. In the REPL, use `/memory` to manage it and `@path` to import file content into prompts.
+> 提示：将持久上下文保存在项目根目录的 **CLAUDE.md** 中。在 REPL 中，使用 `/memory` 管理它，并使用 `@path` 将文件内容导入到提示中。
 
 ---
 
-<h2 id="common-pitfalls-to-avoid">Common Pitfalls to Avoid</h2>
+<h2 id="common-pitfalls-to-avoid">要避免的常见陷阱</h2>
 
-<h3 id="security-pitfalls">Security</h3>
+<h3 id="security-pitfalls">安全</h3>
 
-**❌ Don’t**
-- Use `--dangerously-skip-permissions` on production systems
-- Hard‑code secrets in commands/config
-- Grant overly broad permissions (e.g., `Bash(*)`)
-- Run with elevated privileges unnecessarily
+**❌ 不要**
+- 在生产系统上使用 `--dangerously-skip-permissions`
+- 在命令/配置中硬编码密钥
+- 授予过于宽泛的权限（例如，`Bash(*)`）
+- 不必要地以提升的权限运行
 
-**✅ Do**
-- Store secrets in env vars and credential helpers
-- Start from minimal `permissions.allow` and expand gradually
-- Audit with `claude config list` / `claude config get`
-- Isolate risky operations in containers/VMs
+<h2 id="common-pitfalls">常见误区</h2>
 
-<h3 id="performance-pitfalls">Performance</h3>
+**✅ 正确做法**
+- 将密钥存储在环境变量和凭证助手中
+- 从最小的 `permissions.allow` 开始，逐步扩展
+- 使用 `claude config list` / `claude config get` 进行审计
+- 在容器/虚拟机中隔离高风险操作
+
+<h3 id="performance-pitfalls">性能</h3>
 
 **❌ 不要**
 - 在只需要一个包时加载整个单体仓库
@@ -2244,8 +2181,6 @@ claude "Create sequence diagrams for the authentication flow."
 - 在提示中具体且目标明确
 - 酌情通过日志/OTel进行监控
 - 首先在安全环境中测试自动化
-
-
 
 ---
 
