@@ -1,52 +1,52 @@
-# Claude Developer Platform
+# Claude开发者平台
 
-> Follow along with updates to the Claude API and the Claude Console.
+> 关注Claude API和Claude控制台的最新更新。
 
-#### September 17, 2025
+#### 2025年9月17日
 
-* We've launched tool helpers in beta for the Python and TypeScript SDKs, simplifying tool creation and execution with type-safe input validation and a tool runner for automated tool handling in conversations. For details, see the documentation for [the Python SDK](https://github.com/anthropics/anthropic-sdk-python/blob/main/tools.md) and [the TypeScript SDK](https://github.com/anthropics/anthropic-sdk-typescript/blob/main/helpers.md#tool-helpers).
+* 我们为Python和TypeScript SDK推出了工具助手测试版，通过类型安全的输入验证和对话中自动化工具处理的工具运行器，简化了工具的创建和执行。详情请参见[Python SDK文档](https://github.com/anthropics/anthropic-sdk-python/blob/main/tools.md)和[TypeScript SDK文档](https://github.com/anthropics/anthropic-sdk-typescript/blob/main/helpers.md#tool-helpers)。
 
-#### September 16, 2025
+#### 2025年9月16日
 
-* We've unified our developer offerings under the Claude brand. You should see updated naming and URLs across our platform and documentation, but **our developer interfaces will remain the same**. Here are some notable changes:
-  * Anthropic Console ([console.anthropic.com](https://console.anthropic.com)) → Claude Console ([platform.claude.com](https://platform.claude.com)). The console will be available at both URLs until December 16, 2025. After that date, [console.anthropic.com](https://console.anthropic.com) will automatically redirect to [platform.claude.com](https://platform.claude.com).
-  * Anthropic Docs ([docs.claude.com](https://docs.claude.com)) → Claude Docs ([docs.claude.com](https://docs.claude.com))
-  * Anthropic Help Center ([support.claude.com](https://support.claude.com)) → Claude Help Center ([support.claude.com](https://support.claude.com))
-  * API endpoints, headers, environment variables, and SDKs remain the same. Your existing integrations will continue working without any changes.
+* 我们已将开发者产品统一在Claude品牌下。您将在我们的平台和文档中看到更新的命名和URL，但**我们的开发者界面将保持不变**。以下是一些显著变化：
+  * Anthropic控制台([console.anthropic.com](https://console.anthropic.com)) → Claude控制台([platform.claude.com](https://platform.claude.com))。控制台将在两个URL上可用，直到2025年12月16日。之后，[console.anthropic.com](https://console.anthropic.com)将自动重定向到[platform.claude.com](https://platform.claude.com)。
+  * Anthropic文档([docs.claude.com](https://docs.claude.com)) → Claude文档([docs.claude.com](https://docs.claude.com))
+  * Anthropic帮助中心([support.claude.com](https://support.claude.com)) → Claude帮助中心([support.claude.com](https://support.claude.com))
+  * API端点、标头、环境变量和SDK保持不变。您现有的集成将继续工作，无需任何更改。
 
-#### September 10, 2025
+#### 2025年9月10日
 
-* We've launched the web fetch tool in beta, allowing Claude to retrieve full content from specified web pages and PDF documents. Learn more in our [web fetch tool documentation](/en/docs/agents-and-tools/tool-use/web-fetch-tool).
-* We've launched the [Claude Code Analytics API](/en/api/claude-code-analytics-api), enabling organizations to programmatically access daily aggregated usage metrics for Claude Code, including productivity metrics, tool usage statistics, and cost data.
+* 我们推出了网页获取工具测试版，允许Claude从指定网页和PDF文档检索完整内容。在我们的[网页获取工具文档](/en/docs/agents-and-tools/tool-use/web-fetch-tool)中了解更多。
+* 我们推出了[Claude代码分析API](/en/api/claude-code-analytics-api)，使组织能够以编程方式访问Claude代码的每日聚合使用指标，包括生产力指标、工具使用统计数据和成本数据。
 
-#### September 8, 2025
+#### 2025年9月8日
 
-* We launched a beta version of the [C# SDK](https://github.com/anthropics/anthropic-sdk-csharp).
+* 我们推出了[C# SDK](https://github.com/anthropics/anthropic-sdk-csharp)的测试版。
 
-#### September 5, 2025
+#### 2025年9月5日
 
-* We've launched [rate limit charts](/en/api/rate-limits#monitoring-your-rate-limits-in-the-console) in the Console [Usage](https://console.anthropic.com/settings/usage) page, allowing you to monitor your API rate limit usage and caching rates over time.
+* 我们在控制台[使用情况](https://console.anthropic.com/settings/usage)页面推出了[速率限制图表](/en/api/rate-limits#monitoring-your-rate-limits-in-the-console)，允许您监控API速率限制使用情况和随时间变化的缓存率。
 
-#### September 3, 2025
+#### 2025年9月3日
 
-* We've launched support for citable documents in client-side tool results. Learn more in our [tool use documentation](en/docs/agents-and-tools/tool-use/implement-tool-use.mdx).
+* 我们推出了对客户端工具结果中可引用文档的支持。在我们的[工具使用文档](en/docs/agents-and-tools/tool-use/implement-tool-use.mdx)中了解更多。
 
-#### September 2, 2025
+#### 2025年9月2日
 
-* We've launched v2 of the [Code Execution Tool](/en/docs/agents-and-tools/tool-use/code-execution-tool) in public beta, replacing the original Python-only tool with Bash command execution and direct file manipulation capabilities, including writing code in other languages.
+* 我们推出了[代码执行工具](/en/docs/agents-and-tools/tool-use/code-execution-tool)v2公开测试版，用Bash命令执行和直接文件操作功能(包括用其他语言编写代码)取代了原来的仅Python工具。
 
-#### August 27, 2025
+#### 2025年8月27日
 
-* We launched a beta version of the [PHP SDK](https://github.com/anthropics/anthropic-sdk-php).
+* 我们推出了[PHP SDK](https://github.com/anthropics/anthropic-sdk-php)的测试版。
 
-#### August 26, 2025
+#### 2025年8月26日
 
-* We've increased rate limits on the [1M token context window](/en/docs/build-with-claude/context-windows#1m-token-context-window) for Claude Sonnet 4 on the Claude API. For more information, see [Long context rate limits](/en/api/rate-limits#long-context-rate-limits).
-* The 1m token context window is now available on Google Cloud's Vertex AI. For more information, see [Claude on Vertex AI](/en/api/claude-on-vertex-ai).
+* 我们提高了Claude API上Claude Sonnet 4的[100万令牌上下文窗口](/en/docs/build-with-claude/context-windows#1m-token-context-window)的速率限制。有关更多信息，请参见[长上下文速率限制](/en/api/rate-limits#long-context-rate-limits)。
+* 100万令牌上下文窗口现已在Google Cloud的Vertex AI上可用。有关更多信息，请参见[Vertex AI上的Claude](/en/api/claude-on-vertex-ai)。
 
-#### August 19, 2025
+#### 2025年8月19日
 
-* Request IDs are now included directly in error response bodies alongside the existing `request-id` header. Learn more in our [error documentation](/en/api/errors#error-shapes).
+* 请求ID现在直接包含在错误响应正文中，与现有的`request-id`标头一起。在我们的[错误文档](/en/api/errors#error-shapes)中了解更多。
 
 #### August 18, 2025
 

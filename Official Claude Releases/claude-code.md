@@ -1,5 +1,5 @@
-# Claude Code
+# Claude代码
 
-> Stay up to date with the latest features and improvements to Claude Code
+> 及时了解Claude代码的最新功能和改进
 
-Claude Code releases new versions frequently. For the most up-to-date version information and detailed changelogs, please check the [complete CHANGELOG.md](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md) in the claude-code repository.
+Claude代码频繁发布新版本。要获取最新的版本信息和详细变更日志，请查看claude-code仓库中的[完整CHANGELOG.md](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md)。

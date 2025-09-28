@@ -1,14 +1,14 @@
-## Learn about how to use CLAUDE.md files
+## 了解如何使用CLAUDE.md文件
 
-> #### A small collection of guides and notes about using CLAUDE for code-related tasks and prompts.
+> #### 关于使用CLAUDE进行代码相关任务和提示的指南和笔记集合。
 
 ```env
-# Go to these if you want to know how to use claude.md and utilise our custom made CLAUDE.md files
-* CLAUDE.md by zebbern | zebbern's personal guide and tips.
-* CLAUDE.md by Sabrina | Sabrina's personal guide and tips.
+# 如果您想了解如何使用claude.md并利用我们自定义的CLAUDE.md文件，请查看以下内容
+* CLAUDE.md by zebbern | zebbern的个人指南和技巧
+* CLAUDE.md by Sabrina | Sabrina的个人指南和技巧
 
-# Take a look at the collection of ready to use CLAUDE.md files
-* CLAUDE.md Collection | curated set of CLAUDE / Subagents files
+# 查看现成的CLAUDE.md文件集合
+* CLAUDE.md Collection | 精选的CLAUDE/子代理文件集
 ```
 
 

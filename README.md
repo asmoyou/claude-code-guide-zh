@@ -1,12 +1,12 @@
 <div align="center">
   
-<h2 id="claude-code-community-guide">Claude Code Guide</h2>
+<h2 id="claude-code-community-guide">Claude代码指南</h2>
 
-*For updates and contributions, visit the [official Claude Code documentation](https://claude.ai/code)*
+*更新和贡献请访问[官方Claude代码文档](https://claude.ai/code)*
 
 ![Claude Code](https://img.shields.io/npm/v/@anthropic-ai/claude-code?label=Claude%20Code&logo=anthropic)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen)](https://github.com/anthropics/claude-code)
-[![License](https://img.shields.io/badge/License-Anthropic-orange)](https://claude.ai/code)
+[![状态](https://img.shields.io/badge/Status-活跃中-brightgreen)](https://github.com/anthropics/claude-code)
+[![许可证](https://img.shields.io/badge/License-Anthropic-orange)](https://claude.ai/code)
 
 
 </div>
@@ -15,82 +15,82 @@
 
 <kbd>
 
-| Section                                    | Status          |
+| 章节                                    | 状态          |
 |---------------------------------------------|------------------------------|
-| Guides on how to install on Windows, Linux, MacOS | ✅ |
-| Tips and Tricks                            | ✅ |
-| MCP Overview with what to use              | ✅ |
-| Community Guides                           | ✅ |
-| Troubleshooting                            | ✅ |
-| How to use Claude code the most optimal way| ✅ |
+| Windows、Linux、MacOS安装指南 | ✅ |
+| 技巧和小窍门                            | ✅ |
+| MCP概述及使用方法              | ✅ |
+| 社区指南                           | ✅ |
+| 故障排除                            | ✅ |
+| 最优使用Claude代码的方法| ✅ |
 
-### How To Use Claude Code Via Discord [Here!](https://github.com/zebbern/claude-code-discord)
+### 通过Discord使用Claude代码[点击这里!](https://github.com/zebbern/claude-code-discord)
 
 
 </kbd>
 
-#### [Click For Daily Updated & Organized Claude Changelogs & News](https://github.com/zebbern/claude-code-guide/tree/main/Official%20Claude%20Releases)
+#### [点击查看每日更新整理的Claude变更日志和新闻](https://github.com/zebbern/claude-code-guide/tree/main/Official%20Claude%20Releases)
 
 </div>
 
 ---
 
-<h3 id="content">Content</h3>
+<h3 id="content">目录</h3>
 
-_Quick links:_ [Install](#quick-start) · [Commands](#claude-commands) · [Shortcuts](#keyboard-shortcuts) · [MCP](#mcp-integration) · [Troubleshoot](#help--troubleshooting)
+_快速链接:_ [安装](#quick-start) · [命令](#claude-commands) · [快捷键](#keyboard-shortcuts) · [MCP](#mcp-integration) · [故障排除](#help--troubleshooting)
 
-- **[Getting Started](#getting-started)**
-  - [Quick Start](#quick-start)
-  - [Initial Setup](#initial-setup)
+- **[入门指南](#getting-started)**
+  - [快速开始](#quick-start)
+  - [初始设置](#initial-setup)
 
-- **[Configuration & Environment](#configuration--environment)**
-  - [Environment Variables](#environment-variables)
-  - [Configuration Files](#configuration-files)
+- **[配置与环境](#configuration--environment)**
+  - [环境变量](#environment-variables)
+  - [配置文件](#configuration-files)
 
-- **[Commands & Usage](#commands--usage)**
-  - [Claude Commands](#claude-commands)
-  - [Cheat Sheet](#cheat-sheet)
+- **[命令与使用](#commands--usage)**
+  - [Claude命令](#claude-commands)
+  - [速查表](#cheat-sheet)
 
-- **[Interface & Input](#interface--input)**
-  - [Keyboard Shortcuts](#keyboard-shortcuts)
-  - [Vim Mode](#vim-mode)
+- **[界面与输入](#interface--input)**
+  - [键盘快捷键](#keyboard-shortcuts)
+  - [Vim模式](#vim-mode)
 
-- **[Advanced Features](#advanced-features)**
-  - [Sub Agents](#sub-agents)
-  - [MCP Integration](#mcp-integration)
-  - [Hooks System](#hooks-system)
+- **[高级功能](#advanced-features)**
+  - [子代理](#sub-agents)
+  - [MCP集成](#mcp-integration)
+  - [钩子系统](#hooks-system)
 
-- **[Security & Permissions](#security--permissions)**
-  - [Dangerous Mode](#dangerous-mode)
-  - [Security Best Practices](#security-best-practices-main)
+- **[安全与权限](#security--permissions)**
+  - [危险模式](#dangerous-mode)
+  - [安全最佳实践](#security-best-practices-main)
 
-- **[Automation & Integration](#automation--integration)**
-  - [Automation & Scripting](#automation--scripting-with-claude-code)
-  - [Auto PR Review](#auto-pr-review-inline-comments)
-  - [Issue Triage](#issue-triage-suggest-labels--severity)
+- **[自动化与集成](#automation--integration)**
+  - [自动化与脚本](#automation--scripting-with-claude-code)
+  - [自动PR审查](#auto-pr-review-inline-comments)
+  - [问题分类](#issue-triage-suggest-labels--severity)
 
-- **[Help & Troubleshooting](#help--troubleshooting)**
-  - [Installation Issues](#installation--nodejs-issues)
-  - [MCP Issues](#mcp-model-context-protocol-issues)
-  - [Best Practices](#best-practices)
+- **[帮助与故障排除](#help--troubleshooting)**
+  - [安装问题](#installation--nodejs-issues)
+  - [MCP问题](#mcp-model-context-protocol-issues)
+  - [最佳实践](#best-practices)
 
-- **[Third-Party Integrations](#third-party-integrations)**
-  - [DeepSeek Integration](#deepseek-integration)
+- **[第三方集成](#third-party-integrations)**
+  - [DeepSeek集成](#deepseek-integration)
 
 
 ---
 
-<h1 id="getting-started">Getting Started</h1>
+<h1 id="getting-started">入门指南</h1>
 
-**Enable sound alerts when claude completes the task:**
+**当Claude完成任务时启用声音提示:**
 > 
 > <kbd>claude config set --global preferredNotifChannel terminal_bell</kbd>
-<h2 id="quick-start">Quick Start</h2>
+<h2 id="quick-start">快速开始</h2>
 
 > [!TIP]
-> **Send <mark>claude</mark> or <mark>npx claude</mark> in terminal to start the interface**
+> **在终端中输入<mark>claude</mark>或<mark>npx claude</mark>来启动界面**
 >
-> **Go to [Help & Troubleshooting](#help--troubleshooting) to fix issues...**
+> **遇到问题请前往[帮助与故障排除](#help--troubleshooting)解决...**
 ```C
 # Node.js 18+⭐️              
 /*Universal Method       */ npm install -g @anthropic-ai/claude-code
@@ -141,49 +141,49 @@ _Quick links:_ [Install](#quick-start) · [Commands](#claude-commands) · [Short
 
 ---
 
-<h2 id="system-requirements">System Requirements</h2>
+<h2 id="system-requirements">系统要求</h2>
 
-> - OS: macOS 10.15+, Ubuntu 20.04+/Debian 10+, or Windows 10/11 or WSL
+> - 操作系统: macOS 10.15+, Ubuntu 20.04+/Debian 10+, 或 Windows 10/11 或 WSL
 
-> - Hardware: 4GB RAM minimum 8GB+ recommended
+> - 硬件: 最低4GB内存，推荐8GB以上
 
-> - Software: Node.js 18+ or git 2.23+ (optional) & GitHub or GitLab CLI for PR workflows (optional)
+> - 软件: Node.js 18+ 或 git 2.23+ (可选) & GitHub或GitLab CLI用于PR工作流(可选)
 
-> - Internet: Connection for API calls
+> - 网络: API调用需要网络连接
 
 > - Node.js 18+
 
 
 ---
 
-<h2 id="initial-setup">Initial Setup</h2>
+<h2 id="initial-setup">初始设置</h2>
 
 > [!Tip]
-> **Find API key from [Anthropic Console](https://console.anthropic.com)**
+> **从[Anthropic控制台](https://console.anthropic.com)获取API密钥**
 >
-> **Do NOT commit real keys use git-ignored files, OS key stores, or secret managers**
+> **不要提交真实密钥，请使用git忽略的文件、操作系统密钥存储或密钥管理器**
 ```C
-# Universal
-/* start login process                    */ claude /login
-/* Setup long-lived authentication token  */ claude setup-token
+# 通用方法
+/* 开始登录流程                    */ claude /login
+/* 设置长期有效的认证令牌  */ claude setup-token
 ----------------------------------------------------------------------------------------------------------------------------------
 # Windows
-/* Set-api-key        */ set ANTHROPIC_API_KEY=sk-your-key-here-here
-/* cmd-masked-check   */ echo OK: %ANTHROPIC_API_KEY:~0,8%***
-/* Set-persistent-key */ setx ANTHROPIC_API_KEY "sk-your-key-here-here"
-/* cmd-unset-key      */ set ANTHROPIC_API_KEY=
+/* 设置API密钥        */ set ANTHROPIC_API_KEY=sk-your-key-here-here
+/* cmd掩码检查   */ echo OK: %ANTHROPIC_API_KEY:~0,8%***
+/* 设置持久密钥 */ setx ANTHROPIC_API_KEY "sk-your-key-here-here"
+/* cmd取消设置密钥      */ set ANTHROPIC_API_KEY=
 ----------------------------------------------------------------------------------------------------------------------------------
 # Linux
-/* Set-api-key        */ export ANTHROPIC_API_KEY="sk-your-key-here-here"
-/* masked-check       */ echo "OK: ${ANTHROPIC_API_KEY:0:8}***"
-/* remove-session     */ unset ANTHROPIC_API_KEY
+/* 设置API密钥        */ export ANTHROPIC_API_KEY="sk-your-key-here-here"
+/* 掩码检查       */ echo "OK: ${ANTHROPIC_API_KEY:0:8}***"
+/* 移除会话密钥     */ unset ANTHROPIC_API_KEY
 ----------------------------------------------------------------------------------------------------------------------------------
 # Powershell
-/* ps-session         */ $env:ANTHROPIC_API_KEY = "sk-your-key-here-here"
-/* ps-masked-check    */ "OK: $($env:ANTHROPIC_API_KEY.Substring(0,8))***"
-/* ps-persist         */ [Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY","sk-your-key-here-here","User") 
-/* ps-rotate          */ $env:ANTHROPIC_API_KEY = "sk-new-key"
-/* ps-remove          */ Remove-Item Env:\ANTHROPIC_API_KEY
+/* ps会话设置         */ $env:ANTHROPIC_API_KEY = "sk-your-key-here-here"
+/* ps掩码检查    */ "OK: $($env:ANTHROPIC_API_KEY.Substring(0,8))***"
+/* ps持久化设置         */ [Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY","sk-your-key-here-here","User") 
+/* ps轮换密钥          */ $env:ANTHROPIC_API_KEY = "sk-new-key"
+/* ps移除密钥          */ Remove-Item Env:\ANTHROPIC_API_KEY
 ----------------------------------------------------------------------------------------------------------------------------------
 # Other...
 # persist-bash/*      */ echo 'export ANTHROPIC_API_KEY="sk-your-key-here-here"' >> ~/.bashrc && source ~/.bashrc
@@ -194,59 +194,59 @@ _Quick links:_ [Install](#quick-start) · [Commands](#claude-commands) · [Short
 
 ---
 
-<h1 id="configuration--environment">Configuration & Environment</h1>
+<h1 id="configuration--environment">配置与环境</h1>
 
-<h2 id="environment-variables">Environment Variables</h2>
+<h2 id="environment-variables">环境变量</h2>
 
-> **You can also set any of these in settings.json under the "env" key for automatic application.**
+> **您也可以在settings.json文件的"env"键下设置这些变量以实现自动应用。**
 
 > [!Important] 
-> **Windows Users replace <kbd>export</kbd> with <kbd>set</kbd> or <kbd>setx</kbd> for perm**
+> **Windows用户请将<kbd>export</kbd>替换为<kbd>set</kbd>或<kbd>setx</kbd>以实现永久设置**
 ```bash
-# Environment toggles (put in ~/.bashrc or ~/.zshrc)
-export ANTHROPIC_API_KEY="sk-your-key-here-here"      # API key sent as X-Api-Key header (interactive usage: /login)
-export ANTHROPIC_AUTH_TOKEN="my-auth-token"           # Custom Authorization header; Claude adds "Bearer " prefix automatically
-export ANTHROPIC_CUSTOM_HEADERS="X-Trace-Id: 12345"   # Extra request headers (format: "Name: Value")
+# 环境变量开关(放入~/.bashrc或~/.zshrc)
+export ANTHROPIC_API_KEY="sk-your-key-here-here"      # 作为X-Api-Key头发送的API密钥(交互式使用: /login)
+export ANTHROPIC_AUTH_TOKEN="my-auth-token"           # 自定义Authorization头; Claude会自动添加"Bearer "前缀
+export ANTHROPIC_CUSTOM_HEADERS="X-Trace-Id: 12345"   # 额外的请求头(格式: "名称: 值")
 
-export ANTHROPIC_MODEL="claude-sonnet-4-20250514"                # Custom model name to use
-export ANTHROPIC_DEFAULT_SONNET_MODEL="claude-sonnet-4-20250514" # Default Sonnet model alias
-export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-opus-4-20250514"     # Default Opus model alias
-export ANTHROPIC_SMALL_FAST_MODEL="haiku-model"                  # Haiku-class model for background tasks (placeholder)
-export ANTHROPIC_SMALL_FAST_MODEL_AWS_REGION="REGION"            # Override AWS region for the small/fast model on Bedrock (placeholder)
+export ANTHROPIC_MODEL="claude-sonnet-4-20250514"                # 自定义使用的模型名称
+export ANTHROPIC_DEFAULT_SONNET_MODEL="claude-sonnet-4-20250514" # 默认Sonnet模型别名
+export ANTHROPIC_DEFAULT_OPUS_MODEL="claude-opus-4-20250514"     # 默认Opus模型别名
+export ANTHROPIC_SMALL_FAST_MODEL="haiku-model"                  # 后台任务使用的Haiku类模型(占位符)
+export ANTHROPIC_SMALL_FAST_MODEL_AWS_REGION="REGION"            # 覆盖Bedrock上小型/快速模型的AWS区域(占位符)
 
-export AWS_BEARER_TOKEN_BEDROCK="bedrock_..."         # Amazon Bedrock API key/token for authentication
+export AWS_BEARER_TOKEN_BEDROCK="bedrock_..."         # Amazon Bedrock API密钥/令牌用于认证
 
-export BASH_DEFAULT_TIMEOUT_MS=60000                  # Default timeout (ms) for long-running bash commands
-export BASH_MAX_TIMEOUT_MS=300000                     # Maximum timeout (ms) allowed for long-running bash commands
-export BASH_MAX_OUTPUT_LENGTH=20000                   # Max characters in bash outputs before middle-truncation
+export BASH_DEFAULT_TIMEOUT_MS=60000                  # 长时间运行的bash命令的默认超时(毫秒)
+export BASH_MAX_TIMEOUT_MS=300000                     # 长时间运行的bash命令允许的最大超时(毫秒)
+export BASH_MAX_OUTPUT_LENGTH=20000                   # bash输出中间截断前的最大字符数
 
-export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1     # (0 or 1) return to original project dir after each Bash command
-export CLAUDE_CODE_API_KEY_HELPER_TTL_MS=600000       # Interval (ms) to refresh creds when using apiKeyHelper
-export CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL=1            # (0 or 1) skip auto-installation of IDE extensions
-export CLAUDE_CODE_MAX_OUTPUT_TOKENS=4096             # Max number of output tokens for most requests
+export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1     # (0或1)每个Bash命令后返回原始项目目录
+export CLAUDE_CODE_API_KEY_HELPER_TTL_MS=600000       # 使用apiKeyHelper时刷新凭证的间隔(毫秒)
+export CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL=1            # (0或1)跳过IDE扩展的自动安装
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS=4096             # 大多数请求的最大输出token数
 
-export CLAUDE_CODE_USE_BEDROCK=1                      # (0 or 1) use Amazon Bedrock
-export CLAUDE_CODE_USE_VERTEX=0                       # (0 or 1) use Google Vertex AI
-export CLAUDE_CODE_SKIP_BEDROCK_AUTH=0                # (0 or 1) skip AWS auth for Bedrock (e.g., via LLM gateway)
-export CLAUDE_CODE_SKIP_VERTEX_AUTH=0                 # (0 or 1) skip Google auth for Vertex (e.g., via LLM gateway)
+export CLAUDE_CODE_USE_BEDROCK=1                      # (0或1)使用Amazon Bedrock
+export CLAUDE_CODE_USE_VERTEX=0                       # (0或1)使用Google Vertex AI
+export CLAUDE_CODE_SKIP_BEDROCK_AUTH=0                # (0或1)跳过Bedrock的AWS认证(例如通过LLM网关)
+export CLAUDE_CODE_SKIP_VERTEX_AUTH=0                 # (0或1)跳过Vertex的Google认证(例如通过LLM网关)
 
-export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=0     # (0 or 1) disable nonessential traffic (equivalent to DISABLE_* below)
-export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=0           # (0 or 1) disable automatic terminal title updates
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=0     # (0或1)禁用非必要流量(等同于下面的DISABLE_*)
+export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=0           # (0或1)禁用自动终端标题更新
 
-export DISABLE_AUTOUPDATER=0                          # (0 or 1) disable automatic updates (overrides autoUpdates setting)
-export DISABLE_BUG_COMMAND=0                          # (0 or 1) disable the /bug command
-export DISABLE_COST_WARNINGS=0                        # (0 or 1) disable cost warning messages
-export DISABLE_ERROR_REPORTING=0                      # (0 or 1) opt out of Sentry error reporting
-export DISABLE_NON_ESSENTIAL_MODEL_CALLS=0            # (0 or 1) disable model calls for non-critical paths
-export DISABLE_TELEMETRY=0                            # (0 or 1) opt out of Statsig telemetry
+export DISABLE_AUTOUPDATER=0                          # (0或1)禁用自动更新(覆盖autoUpdates设置)
+export DISABLE_BUG_COMMAND=0                          # (0或1)禁用/bug命令
+export DISABLE_COST_WARNINGS=0                        # (0或1)禁用成本警告消息
+export DISABLE_ERROR_REPORTING=0                      # (0或1)选择退出Sentry错误报告
+export DISABLE_NON_ESSENTIAL_MODEL_CALLS=0            # (0或1)禁用非关键路径的模型调用
+export DISABLE_TELEMETRY=0                            # (0或1)选择退出Statsig遥测
 
-export HTTP_PROXY="http://proxy:8080"                 # HTTP proxy server URL
-export HTTPS_PROXY="https://proxy:8443"               # HTTPS proxy server URL
+export HTTP_PROXY="http://proxy:8080"                 # HTTP代理服务器URL
+export HTTPS_PROXY="https://proxy:8443"               # HTTPS代理服务器URL
 
-export MAX_THINKING_TOKENS=0                          # (0 or 1 to turn off/on) force a thinking budget for the model
-export MCP_TIMEOUT=120000                             # MCP server startup timeout (ms)
-export MCP_TOOL_TIMEOUT=60000                         # MCP tool execution timeout (ms)
-export MAX_MCP_OUTPUT_TOKENS=25000                    # Max tokens allowed in MCP tool responses (default 25000)
+export MAX_THINKING_TOKENS=0                          # (0或1开启/关闭)强制模型的思考预算
+export MCP_TIMEOUT=120000                             # MCP服务器启动超时(毫秒)
+export MCP_TOOL_TIMEOUT=60000                         # MCP工具执行超时(毫秒)
+export MAX_MCP_OUTPUT_TOKENS=25000                    # MCP工具响应中允许的最大token数(默认25000)
 
 export USE_BUILTIN_RIPGREP=0                          # (0 or 1) set 0 to use system-installed rg instead of bundled one
 
@@ -2221,29 +2221,29 @@ claude "Create sequence diagrams for the authentication flow."
 
 <h3 id="performance-pitfalls">Performance</h3>
 
-**❌ Don’t**
-- Load an entire monorepo when you only need a package
-- Max out thinking/turn budgets for simple tasks
-- Ignore session cleanup
+**❌ 不要**
+- 在只需要一个包时加载整个单体仓库
+- 为简单任务耗尽思考/轮次预算
+- 忽略会话清理
 
-**✅ Do**
-- Use `--add-dir` for focused context
-- Right‑size with `--max-turns` and `MAX_THINKING_TOKENS`
-- Set `cleanupPeriodDays` to prune old sessions
+**✅ 要**
+- 使用 `--add-dir` 获取聚焦上下文
+- 使用 `--max-turns` 和 `MAX_THINKING_TOKENS` 进行适当调整
+- 设置 `cleanupPeriodDays` 以修剪旧会话
 
-<h3 id="workflow-pitfalls">Workflow</h3>
+<h3 id="workflow-pitfalls">工作流程</h3>
 
-**❌ Don’t**
-- Skip project context (`CLAUDE.md`)
-- Use vague prompts
-- Ignore errors/logs
-- Automate without testing
+**❌ 不要**
+- 跳过项目上下文 (`CLAUDE.md`)
+- 使用模糊的提示
+- 忽略错误/日志
+- 未经测试就自动化
 
-**✅ Do**
-- Maintain and update `CLAUDE.md`
-- Be specific and goal‑oriented in prompts
-- Monitor via logs/OTel as appropriate
-- Test automation in safe environments first
+**✅ 要**
+- 维护和更新 `CLAUDE.md`
+- 在提示中具体且目标明确
+- 酌情通过日志/OTel进行监控
+- 首先在安全环境中测试自动化
 
 
 
@@ -2251,14 +2251,14 @@ claude "Create sequence diagrams for the authentication flow."
 
 <h1 id="third-party-integrations">Third-Party Integrations</h1>
 
-<h2 id="deepseek-integration">DeepSeek Integration</h2>
+<h2 id="deepseek-integration">DeepSeek集成</h2>
 
-1. ###### Have claude Code installed 
+1. ###### 已安装Claude Code
 ```
 npm install -g @anthropic-ai/claude-code
 ```
 
-2. ###### Config Environment Variables
+2. ###### 配置环境变量
 ```bash
 export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
 export ANTHROPIC_AUTH_TOKEN=${YOUR_API_KEY}
@@ -2266,7 +2266,7 @@ export ANTHROPIC_MODEL=deepseek-chat
 export ANTHROPIC_SMALL_FAST_MODEL=deepseek-chat
 ```
 
-3. ###### Now all you need to do is launch `claude` 
+3. ###### 现在您只需启动 `claude`
 
-Find more information from the [Official Deepseek Docs](https://api-docs.deepseek.com/guides/anthropic_api)
+从[Deepseek官方文档](https://api-docs.deepseek.com/guides/anthropic_api)中查找更多信息
 

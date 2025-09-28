@@ -1,27 +1,27 @@
-## Feature Implementation System Guidelines
+## 功能实现系统指南
 
-### Feature Implementation Priority Rules
-- IMMEDIATE EXECUTION: Launch parallel Tasks immediately upon feature requests
-- NO CLARIFICATION: Skip asking what type of implementation unless absolutely critical
-- PARALLEL BY DEFAULT: Always use 7-parallel-Task method for efficiency
+### 功能实现优先级规则
+- 立即执行：根据功能请求立即启动并行任务
+- 无需澄清：除非绝对关键，否则跳过询问实现类型
+- 默认并行：始终使用7个并行任务方法以提高效率
 
-### Parallel Feature Implementation Workflow
-1. **Component**: Create main component file
-2. **Styles**: Create component styles/CSS
-3. **Tests**: Create test files  
-4. **Types**: Create type definitions
-5. **Hooks**: Create custom hooks/utilities
-6. **Integration**: Update routing, imports, exports
-7. **Remaining**: Update package.json, documentation, configuration files
-8. **Review and Validation**: Coordinate integration, run tests, verify build, check for conflicts
+### 并行功能实现工作流程
+1. **组件**：创建主组件文件
+2. **样式**：创建组件样式/CSS
+3. **测试**：创建测试文件
+4. **类型**：创建类型定义
+5. **钩子**：创建自定义钩子/实用程序
+6. **集成**：更新路由、导入、导出
+7. **剩余**：更新package.json、文档、配置文件
+8. **审查和验证**：协调集成、运行测试、验证构建、检查冲突
 
-### Context Optimization Rules
-- Strip out all comments when reading code files for analysis
-- Each task handles ONLY specified files or file types
-- Task 7 combines small config/doc updates to prevent over-splitting
+### 上下文优化规则
+- 分析代码文件时，剥离所有注释
+- 每个任务只处理指定的文件或文件类型
+- 任务7合并小的配置/文档更新，以防止过度拆分
 
-### Feature Implementation Guidelines
-- **CRITICAL**: Make MINIMAL CHANGES to existing patterns and structures
-- **CRITICAL**: Preserve existing naming conventions and file organization
-- Follow project's established architecture and component patterns
-- Use existing utility functions and avoid duplicating functionality
+### 功能实现指南
+- **关键**：对现有模式和结构进行最小更改
+- **关键**：保留现有命名约定和文件组织
+- 遵循项目既定的架构和组件模式
+- 使用现有实用函数并避免重复功能

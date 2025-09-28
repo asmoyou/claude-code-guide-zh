@@ -1,161 +1,159 @@
-# Development Guidelines
+# 开发指南
 
-This document contains critical information about working with this codebase. Follow these guidelines precisely.
+本文档包含有关使用此代码库的关键信息。请严格遵循以下指南。
 
-## Core Development Rules
+## 核心开发规则
 
-1. Package Management
-   - ONLY use uv, NEVER pip
-   - Installation: `uv add package`
-   - Running tools: `uv run tool`
-   - Upgrading: `uv add --dev package --upgrade-package package`
-   - FORBIDDEN: `uv pip install`, `@latest` syntax
+1. 包管理
+   - 仅使用 uv，绝不使用 pip
+   - 安装: `uv add package`
+   - 运行工具: `uv run tool`
+   - 升级: `uv add --dev package --upgrade-package package`
+   - 禁止: `uv pip install`, `@latest` 语法
 
-2. Code Quality
-   - Type hints required for all code
-   - use pyrefly for type checking
-     - run `pyrefly init` to start
-     - run `pyrefly check` after every change and fix resultings errors
-   - Public APIs must have docstrings
-   - Functions must be focused and small
-   - Follow existing patterns exactly
-   - Line length: 88 chars maximum
+2. 代码质量
+   - 所有代码都需要类型提示
+   - 使用 pyrefly 进行类型检查
+     - 运行 `pyrefly init` 开始
+     - 每次更改后运行 `pyrefly check` 并修复产生的错误
+   - 公共 API 必须有文档字符串
+   - 函数必须专注且小巧
+   - 严格遵循现有模式
+   - 行长度: 最多 88 个字符
 
-3. Testing Requirements
-   - Framework: `uv run pytest`
-   - Async testing: use anyio, not asyncio
-   - Coverage: test edge cases and errors
-   - New features require tests
-   - Bug fixes require regression tests
+3. 测试要求
+   - 框架: `uv run pytest`
+   - 异步测试: 使用 anyio，而不是 asyncio
+   - 覆盖率: 测试边缘情况和错误
+   - 新功能需要测试
+   - 错误修复需要回归测试
 
-4. Code Style
-    - PEP 8 naming (snake_case for functions/variables)
-    - Class names in PascalCase
-    - Constants in UPPER_SNAKE_CASE
-    - Document with docstrings
-    - Use f-strings for formatting
+4. 代码风格
+    - PEP 8 命名 (函数/变量使用 snake_case)
+    - 类名使用 PascalCase
+    - 常量使用 UPPER_SNAKE_CASE
+    - 使用文档字符串进行文档编写
+    - 使用 f-strings 进行格式化
 
-## Development Philosophy
+## 开发理念
 
-- **Simplicity**: Write simple, straightforward code
-- **Readability**: Make code easy to understand
-- **Performance**: Consider performance without sacrificing readability
-- **Maintainability**: Write code that's easy to update
-- **Testability**: Ensure code is testable
-- **Reusability**: Create reusable components and functions
-- **Less Code = Less Debt**: Minimize code footprint
+- **简洁**: 编写简单、直接的代码
+- **可读性**: 使代码易于理解
+- **性能**: 在不牺牲可读性的前提下考虑性能
+- **可维护性**: 编写易于更新的代码
+- **可测试性**: 确保代码可测试
+- **可重用性**: 创建可重用的组件和函数
+- **更少的代码 = 更少的债务**: 最小化代码占用空间
 
-## Coding Best Practices
+## 编码最佳实践
 
-- **Early Returns**: Use to avoid nested conditions
-- **Descriptive Names**: Use clear variable/function names (prefix handlers with "handle")
-- **Constants Over Functions**: Use constants where possible
-- **DRY Code**: Don't repeat yourself
-- **Functional Style**: Prefer functional, immutable approaches when not verbose
-- **Minimal Changes**: Only modify code related to the task at hand
-- **Function Ordering**: Define composing functions before their components
-- **TODO Comments**: Mark issues in existing code with "TODO:" prefix
-- **Simplicity**: Prioritize simplicity and readability over clever solutions
-- **Build Iteratively** Start with minimal functionality and verify it works before adding complexity
-- **Run Tests**: Test your code frequently with realistic inputs and validate outputs
-- **Build Test Environments**: Create testing environments for components that are difficult to validate directly
-- **Functional Code**: Use functional and stateless approaches where they improve clarity
-- **Clean logic**: Keep core logic clean and push implementation details to the edges
-- **File Organsiation**: Balance file organization with simplicity - use an appropriate number of files for the project scale
+- **提前返回**: 用于避免嵌套条件
+- **描述性名称**: 使用清晰的变量/函数名称 (处理程序前缀为 "handle")
+- **常量优于函数**: 尽可能使用常量
+- **DRY 代码**: 不要重复自己
+- **函数式风格**: 在不冗长的情况下，优先选择函数式、不可变的方法
+- **最小化更改**: 仅修改与当前任务相关的代码
+- **函数排序**: 在其组件之前定义组合函数
+- **TODO 注释**: 使用 "TODO:" 前缀标记现有代码中的问题
+- **简洁性**: 优先考虑简洁性和可读性，而不是巧妙的解决方案
+- **迭代构建**: 从最小功能开始，并在添加复杂性之前验证其是否有效
+- **运行测试**: 经常使用真实的输入测试您的代码并验证输出
+- **构建测试环境**: 为难以直接验证的组件创建测试环境
+- **函数式代码**: 在提高清晰度的情况下使用函数式和无状态方法
+- **清晰的逻辑**: 保持核心逻辑清晰，并将实现细节推到边缘
+- **文件组织**: 平衡文件组织与简洁性 - 为项目规模使用适当数量的文件
 
-## System Architecture
+## 系统架构
 
-- use pydantic and langchain
-- this project is a very simple chatbot. Keep files to a minimum
+- 使用 pydantic 和 langchain
+- 这个项目是一个非常简单的聊天机器人。将文件保持在最少
 
 
 
-## Pull Requests
+## 拉取请求
 
-- Create a detailed message of what changed. Focus on the high level description of
-  the problem it tries to solve, and how it is solved. Don't go into the specifics of the
-  code unless it adds clarity.
+- 创建详细的更改消息。重点关注问题的高级描述，以及如何解决。除非能增加清晰度，否则不要深入代码细节。
 
-## Git Workflow
+## Git 工作流程
 
-- Always use feature branches; do not commit directly to `main`
-  - Name branches descriptively: `fix/auth-timeout`, `feat/api-pagination`, `chore/ruff-fixes`
-  - Keep one logical change per branch to simplify review and rollback
-- Create pull requests for all changes
-  - Open a draft PR early for visibility; convert to ready when complete
-  - Ensure tests pass locally before marking ready for review
-  - Use PRs to trigger CI/CD and enable async reviews
-- Link issues
-  - Before starting, reference an existing issue or create one
-  - Use commit/PR messages like `Fixes #123` for auto-linking and closure
-- Commit practices
-  - Make atomic commits (one logical change per commit)
-  - Prefer conventional commit style: `type(scope): short description`
-    - Examples: `feat(eval): group OBS logs per test`, `fix(cli): handle missing API key`
-  - Squash only when merging to `main`; keep granular history on the feature branch
-- Practical workflow
-  1. Create or reference an issue
+- 始终使用功能分支；不要直接提交到 `main`
+  - 描述性地命名分支: `fix/auth-timeout`, `feat/api-pagination`, `chore/ruff-fixes`
+  - 每个分支只保留一个逻辑更改，以简化审查和回滚
+- 为所有更改创建拉取请求
+  - 尽早打开草稿 PR 以提高可见性；完成后转换为就绪状态
+  - 在标记为准备审查之前，确保本地测试通过
+  - 使用 PR 触发 CI/CD 并启用异步审查
+- 链接问题
+  - 在开始之前，引用现有问题或创建一个问题
+  - 使用 `Fixes #123` 等提交/PR 消息进行自动链接和关闭
+- 提交实践
+  - 进行原子提交 (每个提交一个逻辑更改)
+  - 优先使用约定式提交风格: `type(scope): short description`
+    - 示例: `feat(eval): group OBS logs per test`, `fix(cli): handle missing API key`
+  - 仅在合并到 `main` 时进行 squash；在功能分支上保留细粒度历史记录
+- 实际工作流程
+  1. 创建或引用一个问题
   2. `git checkout -b feat/issue-123-description`
-  3. Commit in small, logical increments
-  4. `git push` and open a draft PR early
-  5. Convert to ready PR when functionally complete and tests pass
-  6. Merge after reviews and checks pass
+  3. 以小而逻辑的增量提交
+  4. `git push` 并尽早打开草稿 PR
+  5. 功能完成后且测试通过时转换为就绪 PR
+  6. 审查和检查通过后合并
 
-## Python Tools
+## Python 工具
 
-- use context7 mcp to check details of libraries
+- 使用 context7 mcp 检查库的详细信息
 
-## Code Formatting
+## 代码格式化
 
 1. Ruff
-   - Format: `uv run ruff format .`
-   - Check: `uv run ruff check .`
-   - Fix: `uv run ruff check . --fix`
-   - Critical issues:
-     - Line length (88 chars)
-     - Import sorting (I001)
-     - Unused imports
-   - Line wrapping:
-     - Strings: use parentheses
-     - Function calls: multi-line with proper indent
-     - Imports: split into multiple lines
+   - 格式化: `uv run ruff format .`
+   - 检查: `uv run ruff check .`
+   - 修复: `uv run ruff check . --fix`
+   - 关键问题:
+     - 行长度 (88 个字符)
+     - 导入排序 (I001)
+     - 未使用的导入
+   - 换行:
+     - 字符串: 使用括号
+     - 函数调用: 多行，并正确缩进
+     - 导入: 分成多行
 
-2. Type Checking
-  - run `pyrefly init` to start
-  - run `pyrefly check` after every change and fix resultings errors
-   - Requirements:
-     - Explicit None checks for Optional
-     - Type narrowing for strings
-     - Version warnings can be ignored if checks pass
+2. 类型检查
+  - 运行 `pyrefly init` 开始
+  - 运行 `pyrefly check` 每次更改后并修复产生的错误
+   - 要求:
+     - 对 Optional 进行显式 None 检查
+     - 字符串的类型收窄
+     - 如果检查通过，可以忽略版本警告
 
 
-## Error Resolution
+## 错误解决
 
-1. CI Failures
-   - Fix order:
-     1. Formatting
-     2. Type errors
+1. CI 失败
+   - 修复顺序:
+     1. 格式化
+     2. 类型错误
      3. Linting
-   - Type errors:
-     - Get full line context
-     - Check Optional types
-     - Add type narrowing
-     - Verify function signatures
+   - 类型错误:
+     - 获取完整的行上下文
+     - 检查 Optional 类型
+     - 添加类型收窄
+     - 验证函数签名
 
-2. Common Issues
-   - Line length:
-     - Break strings with parentheses
-     - Multi-line function calls
-     - Split imports
-   - Types:
-     - Add None checks
-     - Narrow string types
-     - Match existing patterns
+2. 常见问题
+   - 行长度:
+     - 用括号断开字符串
+     - 多行函数调用
+     - 分割导入
+   - 类型:
+     - 添加 None 检查
+     - 收窄字符串类型
+     - 匹配现有模式
 
-3. Best Practices
-   - Check git status before commits
-   - Run formatters before type checks
-   - Keep changes minimal
-   - Follow existing patterns
-   - Document public APIs
-   - Test thoroughly
+3. 最佳实践
+   - 提交前检查 git 状态
+   - 在类型检查前运行格式化程序
+   - 保持更改最小化
+   - 遵循现有模式
+   - 文档化公共 API
+   - 彻底测试

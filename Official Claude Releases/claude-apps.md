@@ -1,113 +1,117 @@
-# Claude Apps
+# Claude 应用程序
 
-> Follow along with updates across Anthropic's Claude applications.
+> 关注 Anthropic 的 Claude 应用程序更新。
 
-#### August 28, 2025
+#### 2025年8月28日
 
-* Updated Consumer Terms and Privacy Policy:
-  * Consumer users (Free, Pro, and Max plans, and when using Claude Code with those accounts) can now choose whether to share their chats and coding sessions to help improve Claude.
-  * Existing users have until September 28, 2025 to make their selection, while new users will choose during signup.
-  * Preferences can be changed at any time in [https://claude.ai/settings/data-privacy-controls](https://claude.ai/settings/data-privacy-controls).
-  * These updates do not apply to Team, Enterprise, API, or 3rd-party platform users.
+* 更新了消费者条款和隐私政策：
+  * 消费者用户（免费、Pro 和 Max 计划，以及使用这些账户的 Claude Code）现在可以选择是否分享他们的聊天和编码会话以帮助改进 Claude。
+  * 现有用户有直到2025年9月28日的时间进行选择，新用户将在注册期间进行选择。
+  * 偏好设置可以随时在 [https://claude.ai/settings/data-privacy-controls](https://claude.ai/settings/data-privacy-controls) 更改。
+  * 这些更新不适用于团队、企业、API 或第三方平台用户。
 
-#### August 5, 2025
+#### 2025年8月5日
 
-* We've added [Claude Opus 4.1](https://www.anthropic.com/news/claude-opus-4-1) to [claude.ai](https://www.claude.ai), an incremental update to Claude Opus 4. Claude Opus 4.1 brings enhanced performance and remains our most capable model for complex reasoning, analysis, and creative tasks.
+* 我们在 [claude.ai](https://www.claude.ai) 上添加了 [Claude Opus 4.1](https://www.anthropic.com/news/claude-opus-4-1)，这是对 Claude Opus 4 的增量更新。Claude Opus 4.1 带来了增强的性能，仍然是我们用于复杂推理、分析和创造性任务的最强大模型。
 
-#### May 22, 2025
+#### 2025年5月22日
 
-* We've added [Claude Sonnet 4](http://www.anthropic.com/news/claude-4) to [claude.ai](https://www.claude.ai).
+* 我们在 [claude.ai](https://www.claude.ai) 上添加了 [Claude Sonnet 4](http://www.anthropic.com/news/claude-4)。
 
-#### February 24th, 2025
+#### 2025年2月24日
 
-* We've added [Claude Sonnet 3.7](http://www.anthropic.com/news/claude-3-7-sonnet) to [claude.ai](https://www.claude.ai), our most intelligent model yet. Claude Sonnet 3.7 can produce near-instant responses or show its extended thinking step-by-step. One model, two ways to think.
+* 我们在 [claude.ai](https://www.claude.ai) 上添加了 [Claude Sonnet 3.7](http://www.anthropic.com/news/claude-3-7-sonnet)，这是我们迄今为止最智能的模型。Claude Sonnet 3.7 可以产生近乎即时的响应或逐步展示其扩展思维。一个模型，两种思考方式。
 
-#### December 20th, 2024
+#### 2024年12月20日
 
-* Custom instructions are now available on [claude.ai](https://www.claude.ai), allowing you to set persistent preferences for how Claude responds.
+* 自定义指令现已在 [claude.ai](https://www.claude.ai) 上提供，允许您设置 Claude 如何响应的持久偏好。
 
-#### December 19th, 2024
+#### 2024年12月19日
 
-* Claude can now analyze large Excel files up to 30MB using the Analysis tool, available in both web and mobile apps.
-* The Analysis tool now supports targeted edits within artifacts.
+* Claude 现在可以使用分析工具分析高达30MB的大型Excel文件，该工具在网页和移动应用中均可用。
+* 分析工具现在支持在工件内进行有针对性的编辑。
 
-#### December 18th, 2024
+#### 2024年12月18日
 
-* Projects can now be created directly from the home page.
-* The Analysis tool now supports advanced mathematical operations through math.js, including symbolic differentiation, linear algebra, trigonometry, and high-precision math.
-* Project chip labels in recent chats are now clickable for quick access.
+* 现在可以直接从主页创建项目。
+* 分析工具现在通过 math.js 支持高级数学运算，包括符号微分、线性代数、三角学和高精度数学。
+* 最近聊天中的项目芯片标签现在可点击以快速访问。
 
-#### November 26th, 2024
+#### 2024年11月26日
 
-* Introducing Styles: customize how Claude responds to better match your preferences and needs.
+* 推出样式功能：自定义 Claude 的响应方式以更好地匹配您的偏好和需求。
 
-#### November 21st, 2024
+#### 2024年11月21日
 
-* Google Docs integration is now available for Pro, Teams, and Enterprise accounts.
+* Google Docs 集成现已在 Pro、Teams 和 Enterprise 账户中提供。
 
-#### November 1st, 2024
+#### 2024年11月1日
 
-* Enhanced PDF support with visual analysis capabilities, allowing Claude to understand both text and visual elements within PDFs.
+* 增强的 PDF 支持，具有视觉分析功能，允许 Claude 理解 PDF 中的文本和视觉元素。
 
-#### October 31st, 2024
+#### 2024年10月31日
 
-* Launched Claude desktop applications for Windows and Mac.
-* Added voice dictation support to Claude mobile apps.
+* 推出了适用于 Windows 和 Mac 的 Claude 桌面应用程序。
+* 为 Claude 移动应用添加了语音听写支持。
 
-#### October 24th, 2024
+#### 2024年10月24日
 
-* Introduced the Analysis tool, enabling Claude to write and execute code for calculations and data analysis.
+* 引入了分析工具，使 Claude 能够编写和执行代码进行计算和数据分析。
 
-#### October 22nd, 2024
+#### 2024年10月22日
 
-* Claude Sonnet 3.5, our most intelligent model yet, just got an upgrade and is available in [claude.ai](https://www.claude.ai). Read more [here](https://www.anthropic.com/claude/sonnet).
+* Claude Sonnet 3.5，我们迄今为止最智能的模型，刚刚进行了升级，现已在 [claude.ai](https://www.claude.ai) 上可用。点击[此处](https://www.anthropic.com/claude/sonnet)了解更多信息。
 
-#### September 4th, 2024
+#### 2024年9月4日
 
-* We introduced the Claude Enterprise plan to help organizations securely collaborate with Claude using internal knowledge. Learn more in our [Enterprise plan announcement](https://www.anthropic.com/news/claude-for-enterprise).
+* 我们推出了Claude企业版计划，帮助组织利用内部知识安全地与Claude协作。在我们的[企业版计划公告](https://www.anthropic.com/news/claude-for-enterprise)中了解更多信息。
 
-#### August 30th, 2024
+#### 2024年8月30日
 
-* We've added a new feature to [claude.ai](https://www.claude.ai) that allows you to highlight text or code within an Artifact and quickly have Claude improve or explain the selection.
+* 我们在 [claude.ai](https://www.claude.ai) 上添加了一项新功能，允许您高亮显示工件中的文本或代码，并快速让Claude改进或解释所选内容。
 
-#### August 22nd, 2024
+#### 2024年8月22日
 
-* We've added support for LaTeX rendering as a feature preview. Claude can now display mathematical equations and expressions in a consistent format.
+* 我们添加了对LaTeX渲染的支持作为功能预览。Claude现在可以以一致的格式显示数学方程和表达式。
 
-#### August 16th, 2024
+#### 2024年8月16日
 
-* We've added a new screenshot button that allows you to quickly capture images from anywhere on your screen and include them in your prompt.
+* 我们添加了一个新的截图按钮，允许您快速从屏幕上的任何位置捕获图像并将其包含在您的提示中。
 
-#### July 31st, 2024
+#### 2024年7月31日
 
-* You can now easily bulk select and delete chats on the recents chats page on [claude.ai](https://www.claude.ai).
+* 您现在可以在 [claude.ai](https://www.claude.ai) 的最近聊天页面上轻松批量选择和删除聊天记录。
 
-#### July 16th, 2024
+#### 2024年7月16日
 
-* Claude Android app is now available. Download it from the [Google Play Store](https://play.google.com/store/apps/details?id=com.anthropic.claude).
+* Claude Android 应用程序现已推出。从 [Google Play 商店](https://play.google.com/store/apps/details?id=com.anthropic.claude) 下载。
 
-#### July 9th, 2024
+#### 2024年7月9日
 
-* Artifacts can now be published, shared, and remixed within [claude.ai](https://www.claude.ai).
+* 工件现在可以在 [claude.ai](https://www.claude.ai) 内发布、共享和重新混合。
 
-#### June 25th, 2024
+#### 2024年6月25日
 
-* [Projects](https://www.anthropic.com/news/projects) is now available on [claude.ai](https://www.claude.ai) for all Claude Pro and Team customers. Projects allow you to ground Claude's outputs in your internal knowledge—be it style guides, codebases, interview transcripts, or past work.
+* [项目](https://www.anthropic.com/news/projects)现已在 [claude.ai](https://www.claude.ai) 上向所有 Claude Pro 和团队客户提供。项目允许您将 Claude 的输出基于您的内部知识——无论是风格指南、代码库、访谈记录还是过去的工作。
 
-#### June 20th, 2024
+#### 2024年6月20日
 
-* [Claude Sonnet 3.5](http://anthropic.com/news/claude-3-5-sonnet), our most intelligent model yet, is now available for free in [claude.ai](https://www.claude.ai).
-* We've introduced [Artifacts](http://anthropic.com/news/claude-3-5-sonnet), an experimental feature now available across all Claude.ai plans. Artifacts allows you to generate and refine various content types—from text documents to interactive HTML—directly within the platform.
+* [Claude Sonnet 3.5](http://anthropic.com/news/claude-3-5-sonnet)，我们迄今为止最智能的模型，现已在 [claude.ai](https://www.claude.ai) 免费提供。
+* 我们推出了 [Artifacts](http://anthropic.com/news/claude-3-5-sonnet)，这是一项实验性功能，现已在所有 Claude.ai 计划中提供。Artifacts 允许您直接在平台内生成和优化各种内容类型——从文本文档到交互式 HTML。
 
-#### June 5th, 2024
+#### 2024年6月5日
 
-* Claude.ai, our API, and iOS app are now available in Canada. Learn more in our [Canada launch announcement](https://www.anthropic.com/news/introducing-claude-to-canada).
+* Claude.ai、我们的 API 和 iOS 应用程序现已在加拿大推出。在我们的[加拿大发布公告](https://www.anthropic.com/news/introducing-claude-to-canada)中了解更多信息。
 
-#### May 13th, 2024
+#### 2024年5月13日
 
-* Claude.ai and our iOS app are now available in Europe. Learn more in our [Europe launch announcement](https://www.anthropic.com/news/claude-europe).
+* Claude.ai 现已在 [日本](https://www.anthropic.com/news/claude-in-japan) 推出。
 
-#### May 1st, 2024
+#### 2024年5月1日
 
-* Claude iOS app is now available. Download it from the [Apple App Store](https://apps.apple.com/us/app/claude-by-anthropic/id6473753684).
-* Claude Team plan is now available, enabling ambitious teams to create a workspace with increased usage for members and tools for managing users and billing. Learn more in our [launch announcement](https://www.anthropic.com/news/team-plan-and-ios).
+* Claude iOS 应用程序现已推出。可从 [Apple App Store](https://apps.apple.com/us/app/claude-by-anthropic/id6473753684) 下载。
+* Claude 团队计划现已推出，使雄心勃勃的团队能够创建一个工作区，为成员提供更多使用量，并提供用户和账单管理工具。在我们的[发布公告](https://www.anthropic.com/news/team-plan-and-ios)中了解更多信息。
+
+#### 2024年3月14日
+
+* Claude.ai 现已在 [英国](https://www.anthropic.com/news/claude-in-the-uk) 推出。
